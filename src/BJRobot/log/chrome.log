@@ -1,0 +1,210 @@
+[2.001][INFO]: COMMAND InitSession {
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "chromeOptions": {
+         "args": [ "--disable-extensions" ],
+         "extensions": [  ]
+      },
+      "javascriptEnabled": true,
+      "platform": "ANY",
+      "proxy": {
+         "autodetect": false,
+         "ftpProxy": "",
+         "httpProxy": "",
+         "noProxy": "localhost",
+         "proxyType": "DIRECT",
+         "socksProxy": "",
+         "sslProxy": ""
+      },
+      "version": ""
+   },
+   "requiredCapabilities": {
+
+   }
+}
+[2.003][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "show_welcome_page": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[2.003][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[2.019][INFO]: Launching chrome: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-extensions --disable-hang-monitor --disable-infobars --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-logging --ignore-certificate-errors --load-component-extension="C:\Users\eason\AppData\Local\Temp\scoped_dir47484_2414\internal" --log-level=0 --metrics-recording-only --no-first-run --no-proxy-server --password-store=basic --remote-debugging-port=12900 --safebrowsing-disable-auto-update --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\eason\AppData\Local\Temp\scoped_dir47484_6272" data:,
+[2.369][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[3.410][INFO]: RESPONSE InitSession {
+   "acceptSslCerts": true,
+   "applicationCacheEnabled": false,
+   "browserConnectionEnabled": false,
+   "browserName": "chrome",
+   "chrome": {
+      "chromedriverVersion": "2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9)",
+      "userDataDir": "C:\\Users\\eason\\AppData\\Local\\Temp\\scoped_dir47484_6272"
+   },
+   "cssSelectorsEnabled": true,
+   "databaseEnabled": false,
+   "handlesAlerts": true,
+   "hasTouchScreen": false,
+   "javascriptEnabled": true,
+   "locationContextEnabled": true,
+   "mobileEmulationEnabled": false,
+   "nativeEvents": true,
+   "networkConnectionEnabled": false,
+   "pageLoadStrategy": "normal",
+   "platform": "Windows NT",
+   "rotatable": false,
+   "takesHeapSnapshot": true,
+   "takesScreenshot": true,
+   "~~~": "..."
+}
+[3.413][INFO]: COMMAND SetScriptTimeout {
+   "ms": 10000.0,
+   "sessionId": "0809cd61728364c1493a6259ceccabcf"
+}
+[3.413][INFO]: RESPONSE SetScriptTimeout
+[3.415][INFO]: COMMAND SetImplicitWait {
+   "ms": 20000.0,
+   "sessionId": "0809cd61728364c1493a6259ceccabcf"
+}
+[3.415][INFO]: RESPONSE SetImplicitWait
+[3.418][INFO]: COMMAND Navigate {
+   "sessionId": "0809cd61728364c1493a6259ceccabcf",
+   "url": "http://www.baidu.com"
+}
+[3.418][INFO]: Waiting for pending navigations...
+[3.432][INFO]: Done waiting for pending navigations. Status: ok
+[3.637][INFO]: Waiting for pending navigations...
+[3.767][INFO]: Done waiting for pending navigations. Status: ok
+[3.767][INFO]: RESPONSE Navigate
+[3.769][INFO]: COMMAND GetTitle {
+
+}
+[3.769][INFO]: Waiting for pending navigations...
+[3.770][INFO]: Done waiting for pending navigations. Status: ok
+[3.773][INFO]: Waiting for pending navigations...
+[3.773][INFO]: Done waiting for pending navigations. Status: ok
+[3.773][INFO]: RESPONSE GetTitle "百度一下，你就知道"
+[3.775][INFO]: COMMAND FindElement {
+   "sessionId": "0809cd61728364c1493a6259ceccabcf",
+   "using": "id",
+   "value": "kw"
+}
+[3.775][INFO]: Waiting for pending navigations...
+[3.775][INFO]: Done waiting for pending navigations. Status: ok
+[3.791][INFO]: Waiting for pending navigations...
+[3.792][INFO]: Done waiting for pending navigations. Status: ok
+[3.792][INFO]: RESPONSE FindElement {
+   "ELEMENT": "0.08064055928208291-1"
+}
+[3.794][INFO]: COMMAND ClearElement {
+   "id": "0.08064055928208291-1",
+   "sessionId": "0809cd61728364c1493a6259ceccabcf"
+}
+[3.794][INFO]: Waiting for pending navigations...
+[3.794][INFO]: Done waiting for pending navigations. Status: ok
+[3.812][INFO]: Waiting for pending navigations...
+[3.815][INFO]: Done waiting for pending navigations. Status: ok
+[3.815][INFO]: RESPONSE ClearElement
+[3.816][INFO]: COMMAND TypeElement {
+   "id": "0.08064055928208291-1",
+   "sessionId": "0809cd61728364c1493a6259ceccabcf",
+   "value": [ "t", "e", "s", "t" ]
+}
+[3.816][INFO]: Waiting for pending navigations...
+[3.817][INFO]: Done waiting for pending navigations. Status: ok
+[3.853][INFO]: Waiting for pending navigations...
+[3.854][INFO]: Done waiting for pending navigations. Status: ok
+[3.854][INFO]: RESPONSE TypeElement
+[3.856][INFO]: COMMAND FindElement {
+   "sessionId": "0809cd61728364c1493a6259ceccabcf",
+   "using": "id",
+   "value": "su"
+}
+[3.856][INFO]: Waiting for pending navigations...
+[3.856][INFO]: Done waiting for pending navigations. Status: ok
+[3.871][INFO]: Waiting for pending navigations...
+[3.871][INFO]: Done waiting for pending navigations. Status: ok
+[3.871][INFO]: RESPONSE FindElement {
+   "ELEMENT": "0.08064055928208291-2"
+}
+[3.873][INFO]: COMMAND ClickElement {
+   "id": "0.08064055928208291-2",
+   "sessionId": "0809cd61728364c1493a6259ceccabcf"
+}
+[3.873][INFO]: Waiting for pending navigations...
+[3.873][INFO]: Done waiting for pending navigations. Status: ok
+[3.914][INFO]: Waiting for pending navigations...
+[4.617][INFO]: Done waiting for pending navigations. Status: ok
+[4.617][INFO]: RESPONSE ClickElement
+[9.010][INFO]: COMMAND FindElement {
+   "sessionId": "0809cd61728364c1493a6259ceccabcf",
+   "using": "partial link text",
+   "value": "JavaScript"
+}
+[9.010][INFO]: Waiting for pending navigations...
+[9.011][INFO]: Done waiting for pending navigations. Status: ok
+[9.102][INFO]: Waiting for pending navigations...
+[9.104][INFO]: Done waiting for pending navigations. Status: ok
+[9.104][INFO]: RESPONSE FindElement {
+   "ELEMENT": "0.0880793521058898-1"
+}
+[30.390][INFO]: COMMAND Quit {
+
+}
+[30.411][INFO]: RESPONSE Quit

@@ -1,0 +1,10 @@
+tmp
+build
+dist
+MANIFEST
+.idea
+.*project
+*.pyc
+.DS_Store
+robotframework_bjrobot.egg-info
+src/robotframework_bjrobot.egg-info

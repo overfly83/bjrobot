@@ -1,0 +1,7 @@
+include MANIFEST.in
+include *.txt
+include *.rst
+recursive-include src *.py
+graft src/BJRobot/resource
+graft src/BJRobot/log
+recursive-exclude src *.pyc

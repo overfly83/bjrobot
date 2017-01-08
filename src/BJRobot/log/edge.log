@@ -1,0 +1,61 @@
+[18:39:36.331] - Starting server... 
+[18:39:36.331] - Listening on http://localhost:49176/ 
+[18:39:36.331] - Waiting for new request... 
+
+[18:39:36.837] - Received a request: POST http://localhost:49176/session 
+[18:39:36.837] - {"requiredCapabilities": {}, "desiredCapabilities": {"platform": "WINDOWS", "browserName": "MicrosoftEdge", "version": "", "edge.usePerProcessProxy": true, "proxy": {"proxyType": "DIRECT", "noProxy": "localhost", "socksProxy": "", "autodetect": false, "sslProxy": "", "httpProxy": "", "ftpProxy": ""}}}
+
+[18:39:37.227] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":{"browserName":"MicrosoftEdge","browserVersion":"38.14393.0.0","platformName":"windows","platformVersion":"10","takesElementScreenshot":true,"takesScreenshot":true,"acceptSslCerts":true,"applicationCacheEnabled":true,"locationContextEnabled":true,"webStorageEnabled":true,"pageLoadStrategy":"normal"}}
+
+[18:39:37.227] - Waiting for new request... 
+
+[18:39:37.232] - Received a request: POST http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/timeouts/implicit_wait 
+[18:39:37.232] - {"sessionId": "A5931545-CC95-4DCB-BA94-7B7971E33D38", "ms": 30000.0}
+
+[18:39:37.232] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":null}
+
+[18:39:37.232] - Waiting for new request... 
+
+[18:39:37.234] - Received a request: POST http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/timeouts/implicit_wait 
+[18:39:37.234] - {"sessionId": "A5931545-CC95-4DCB-BA94-7B7971E33D38", "ms": 10000.0}
+
+[18:39:37.235] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":null}
+
+[18:39:37.235] - Waiting for new request... 
+
+[18:39:37.236] - Received a request: POST http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/url 
+[18:39:37.236] - {"url": "http://www.bing.com", "sessionId": "A5931545-CC95-4DCB-BA94-7B7971E33D38"}
+
+[18:39:37.900] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":null}
+
+[18:39:37.900] - Waiting for new request... 
+
+[18:39:40.960] - Received a request: POST http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/element 
+[18:39:40.961] - {"using": "id", "sessionId": "A5931545-CC95-4DCB-BA94-7B7971E33D38", "value": "sb_form_go"}
+
+[18:39:40.962] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":{"element-6066-11e4-a52e-4f735466cecf":"ed872012-f998-4c55-996a-b5aff7dccaca","ELEMENT":"ed872012-f998-4c55-996a-b5aff7dccaca"}}
+
+[18:39:40.962] - Waiting for new request... 
+
+[18:39:40.965] - Received a request: GET http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/element/ed872012-f998-4c55-996a-b5aff7dccaca/displayed 
+[18:39:40.966] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":true}
+
+[18:39:40.966] - Waiting for new request... 
+
+[18:39:40.968] - Received a request: GET http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/element/ed872012-f998-4c55-996a-b5aff7dccaca/enabled 
+[18:39:40.970] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":true}
+
+[18:39:40.970] - Waiting for new request... 
+
+[18:39:40.972] - Received a request: DELETE http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38/window 
+[18:39:43.101] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":null}
+
+[18:39:43.102] - Waiting for new request... 
+
+[18:39:43.104] - Received a request: DELETE http://localhost:49176/session/A5931545-CC95-4DCB-BA94-7B7971E33D38 
+[18:39:43.104] - Response: {"sessionId":"A5931545-CC95-4DCB-BA94-7B7971E33D38","status":0,"value":null}
+
+[18:39:43.104] - Waiting for new request... 
+
+[18:39:43.106] - Received a request: GET http://localhost:49176/shutdown 
+[18:39:43.106] - Stopping server.
