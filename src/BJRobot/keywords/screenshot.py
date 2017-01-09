@@ -1,8 +1,7 @@
-import errno
 import os
-
 import robot
-
+import robot.utils
+from BJRobot.utilities.system import System
 from keywordgroup import KeywordGroup
 
 
@@ -14,25 +13,6 @@ class Screenshot(KeywordGroup):
         self.screenshot_root_directory = None
 
     # Public
-
-    def set_screenshot_directory(self, path, persist=False):
-        """Sets the root output directory for captured screenshots.
-
-        ``path`` argument specifies the absolute path where the screenshots
-        should be written to. If the specified ``path`` does not exist,
-        it will be created. Setting ``persist`` specifies that the given
-        ``path`` should be used for the rest of the test execution, otherwise
-        the path will be restored at the end of the currently executing scope.
-        """
-        path = os.path.abspath(path)
-        self._create_directory(path)
-        if persist is False:
-            self._screenshot_path_stack.append(self.screenshot_root_directory)
-            # Restore after current scope ends
-            utils.events.on('scope_end', 'current',
-                            self._restore_screenshot_directory)
-
-        self.screenshot_root_directory = path
 
     def capture_page_screenshot(self,
                                 filename='selenium-screenshot-{index}.png'):
@@ -87,7 +67,7 @@ class Screenshot(KeywordGroup):
         | File Should Exist | ${OTHER_DIR}${/}sc-000001.png |
         """
         path, link = self._get_screenshot_paths(filename)
-        self._create_directory(path)
+        System.create_directory(path)
         if hasattr(self._current_browser(), 'get_screenshot_as_file'):
             if not self._current_browser().get_screenshot_as_file(path):
                 raise RuntimeError('Failed to save screenshot ' + link)
@@ -100,16 +80,6 @@ class Screenshot(KeywordGroup):
         return path
 
     # Private
-    def _create_directory(self, path):
-        target_dir = os.path.dirname(path)
-        if not os.path.exists(target_dir):
-            try:
-                os.makedirs(target_dir)
-            except OSError as exc:
-                if exc.errno == errno.EEXIST and os.path.isdir(target_dir):
-                    pass
-                else:
-                    raise
 
     def _get_screenshot_directory(self):
 

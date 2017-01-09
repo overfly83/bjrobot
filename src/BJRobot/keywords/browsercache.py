@@ -1,5 +1,6 @@
 from robot.utils import ConnectionCache
 
+
 class BrowserCache(ConnectionCache):
 
     def __init__(self):
@@ -24,7 +25,7 @@ class BrowserCache(ConnectionCache):
             self.current = self._no_current
             self._closed.add(browser)
 
-    def close_all(self):
+    def close_all(self, closer_method='close'):
         for browser in self._connections:
             if browser not in self._closed:
                 browser.quit()

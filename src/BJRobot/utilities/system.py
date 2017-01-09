@@ -1,8 +1,13 @@
 import os
+import errno
 import platform
 from selenium.webdriver.common.keys import Keys
 
+
 class System:
+
+    def __init__(self):
+        pass
 
     @classmethod
     def search_file_contains(cls, path, keyword):
@@ -14,6 +19,18 @@ class System:
                 cls.search_file_contains(fp, keyword)
 
     @staticmethod
+    def create_directory(path):
+        target_dir = os.path.dirname(path)
+        if not os.path.exists(target_dir):
+            try:
+                os.makedirs(target_dir)
+            except OSError as exc:
+                if exc.errno == errno.EEXIST and os.path.isdir(target_dir):
+                    pass
+                else:
+                    raise
+
+    @staticmethod
     def get_os_name():
         return platform.system().lower()
 
@@ -23,7 +40,7 @@ class System:
 
     @staticmethod
     def map_ascii_key_code_to_key(key_code):
-        map = {
+        mapping = {
             0: Keys.NULL,
             8: Keys.BACK_SPACE,
             9: Keys.TAB,
@@ -42,14 +59,38 @@ class System:
             61: Keys.EQUALS,
             127: Keys.DELETE
         }
-        key = map.get(key_code)
+        key = mapping.get(key_code)
         if key is None:
             key = chr(key_code)
         return key
 
+    @staticmethod
     def map_named_key_code_to_special_key(key_name):
         try:
-           return getattr(Keys, key_name)
+            return getattr(Keys, key_name)
         except AttributeError:
-           message = "Unknown key named '%s'." % (key_name)
-           raise ValueError(message)
+            message = "Unknown key named '%s'." % key_name
+            raise ValueError(message)
+
+    @staticmethod
+    def set_proxy(url):
+        if url is not None and len(url) > 0:
+            return {
+                "httpProxy": url,
+                "ftpProxy": url,
+                "sslProxy": url,
+                "socksProxy": url,
+                "noProxy": 'localhost',
+                "proxyType": "MANUAL",
+                "autodetect": False
+            }
+        else:
+            return {
+                "httpProxy": '',
+                "ftpProxy": '',
+                "sslProxy": '',
+                "socksProxy": '',
+                "noProxy": 'localhost',
+                "proxyType": "DIRECT",
+                "autodetect": False
+            }

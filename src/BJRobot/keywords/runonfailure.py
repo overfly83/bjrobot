@@ -3,6 +3,7 @@ from keywordgroup import KeywordGroup
 
 BUILTIN = BuiltIn.BuiltIn()
 
+
 class RunOnFailure(KeywordGroup):
 
     def __init__(self):
@@ -30,7 +31,8 @@ class RunOnFailure(KeywordGroup):
 
         Example:
         | Register Keyword To Run On Failure  | Log Source | # Run `Log Source` on failure. |
-        | ${previous kw}= | Register Keyword To Run On Failure  | Nothing    | # Disables run-on-failure functionality and stores the previous kw name in a variable. |
+        | ${previous kw}= | Register Keyword To Run On Failure  | Nothing    | # Disables run-on-failure functionality
+        and stores the previous kw name in a variable. |
         | Register Keyword To Run On Failure  | ${previous kw} | # Restore to the previous keyword. |
 
         This run-on-failure functionality only works when running tests on Python/Jython 2.4

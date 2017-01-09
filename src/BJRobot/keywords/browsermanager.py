@@ -1,11 +1,9 @@
 import os
-
 import robot.utils
 from robot.errors import DataError
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-
 from browsercache import BrowserCache
 from keywordgroup import KeywordGroup
 from BJRobot.utilities import System
@@ -44,7 +42,6 @@ class BrowserManager(KeywordGroup):
             driver_instance = self._make_browser(browser_name, proxy)
             driver_instance.get(url)
         except:
-            self._cache.register(driver_instance, alias)
             raise
         self._cache.register(driver_instance, alias)
 
@@ -63,9 +60,9 @@ class BrowserManager(KeywordGroup):
 
                 Example:
                 | Open Browser        | http://google.com | ff       |
-                | Location Should Be  | http://google.com |          |
+                | URL Should Be  | http://google.com |          |
                 | Open Browser        | http://yahoo.com  | ie       | 2nd conn |
-                | Location Should Be  | http://yahoo.com  |          |
+                | URL Should Be  | http://yahoo.com  |          |
                 | Switch Browser      | 1                 | # index  |
                 | Page Should Contain | I'm feeling lucky |          |
                 | Switch Browser      | 2nd conn          | # alias  |
@@ -110,20 +107,20 @@ class BrowserManager(KeywordGroup):
         size = self._current_browser().get_window_size()
         return size['width'], size['height']
 
-    def get_location(self):
+    def get_url(self):
         """Returns the current location."""
         return self._current_browser().current_url
 
     def url_should_be(self, url):
         """Verifies that current URL is exactly `url`."""
-        actual = self.get_location()
+        actual = self.get_url()
         if actual != url:
             raise AssertionError("Location should have been '%s' but was '%s'"
                                  % (url, actual))
 
     def url_should_contain(self, expected):
         """Verifies that current URL contains `expected`."""
-        actual = self.get_location()
+        actual = self.get_url()
         if expected not in actual:
             raise AssertionError("Location should have contained '%s' "
                                  "but it was '%s'." % (expected, actual))
@@ -279,7 +276,7 @@ class BrowserManager(KeywordGroup):
         ie_capabilities['requireWindowFocus'] = False
         ie_capabilities['enableElementCacheCleanup'] = True
         ie_capabilities['ie.usePerProcessProxy'] = True
-        ie_capabilities['proxy'] = self.__set_proxy(proxy)
+        ie_capabilities['proxy'] = System.set_proxy(proxy)
         return webdriver.Ie(executable_path=self.__get_driver_path("ie"),
                             capabilities=ie_capabilities, log_file=cur_path, log_level='INFO')
 
@@ -288,7 +285,7 @@ class BrowserManager(KeywordGroup):
         cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'chrome.log'
         chrome_capabilities = webdriver.DesiredCapabilities.CHROME
         chrome_capabilities['chromeOptions'] = {"args": ["--disable-extensions"], "extensions": []}
-        chrome_capabilities['proxy'] = self.__set_proxy(proxy)
+        chrome_capabilities['proxy'] = System.set_proxy(proxy)
         return webdriver.Chrome(executable_path=self.__get_driver_path("chrome"),
                                 desired_capabilities=chrome_capabilities, service_log_path=cur_path)
 
@@ -298,7 +295,7 @@ class BrowserManager(KeywordGroup):
             cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'edge.log'
             edge_capabilities = DesiredCapabilities.EDGE
             edge_capabilities['edge.usePerProcessProxy'] = True
-            edge_capabilities['proxy'] = self.__set_proxy(proxy)
+            edge_capabilities['proxy'] = System.set_proxy(proxy)
             # edge_options = Options()
             return webdriver.Edge(executable_path=self.__get_driver_path("edge"),
                                   capabilities=edge_capabilities, log_path=cur_path, verbose=True)
@@ -350,25 +347,3 @@ class BrowserManager(KeywordGroup):
             # default = default + os.path.sep + "IEDriverServer.exe"
             default = default + os.sep + "win32" + os.sep + "IEDriverServer.exe"
         return default
-
-    def __set_proxy(self, url):
-        if url is not None:
-            return {
-                "httpProxy": url,
-                "ftpProxy": url,
-                "sslProxy": url,
-                "socksProxy": url,
-                "noProxy": 'localhost',
-                "proxyType": "MANUAL",
-                "autodetect": False
-            }
-        else:
-            return {
-                "httpProxy": '',
-                "ftpProxy": '',
-                "sslProxy": '',
-                "socksProxy": '',
-                "noProxy": 'localhost',
-                "proxyType": "DIRECT",
-                "autodetect": False
-            }
