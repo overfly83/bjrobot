@@ -1,5 +1,5 @@
 Installation
-------------
+-------------
 
 Using ``pip``
 '''''''''''''
@@ -15,3 +15,19 @@ and support for un-installation::
 
     pip install --upgrade robotframework-bjrobot
     pip uninstall robotframework-bjrobot
+
+
+
+
+TO LIST
+----------
+safefind
+safeclick
+configfile parser
+sendkey(enter) to input
+execute_javascript
+
+
+shell command support
+
+Desktop GUI Automation
