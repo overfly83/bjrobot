@@ -74,7 +74,7 @@ class System:
 
     @staticmethod
     def set_proxy(url):
-        if url is not None and len(url) > 0:
+        if url is not None and len(url) > 0 and url.lower() != "none":
             return {
                 "httpProxy": url,
                 "ftpProxy": url,

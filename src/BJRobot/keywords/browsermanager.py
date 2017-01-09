@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import os
 import robot.utils
 from robot.errors import DataError
@@ -7,6 +9,7 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from browsercache import BrowserCache
 from keywordgroup import KeywordGroup
 from BJRobot.utilities import System
+
 
 BROWSER_NAMES = {'ff': "_make_ff",
                  'firefox': "_make_ff",
@@ -27,10 +30,10 @@ BROWSER_NAMES = {'ff': "_make_ff",
 
 
 class BrowserManager(KeywordGroup):
-    __chromeDriverVersion = "2.27"
-    __EdgeDriverVersion = "14393"
-    __firefoxDriverVersion = "0.12"
-    __ieDriverVersion = "2.53"
+    chrome_driver_version = "2.27"
+    edge_driver_version = "14393"
+    firefox_driver_version = "0.12"
+    ie_driver_version = "2.53"
 
     def __init__(self):
         self._cache = BrowserCache()
@@ -38,53 +41,107 @@ class BrowserManager(KeywordGroup):
         self._default_implicit_wait_in_secs = 20
 
     def open_browser(self, url, browser_name="chrome", proxy=None, alias=None):
+        """Open a browser and go to expected url address, set the browser and the proxy, as well as the alias,
+        1. The url is mandatory, otherwise the keyword will fail to execute.
+        2. Browser name is by default set to chrome, the available browser name are
+            ff, firefox
+            ie, internetexplorer
+            googlechrome, gc, chrome,
+            edge
+        3. Proxy support manual and direct
+            If manual, please give a proxy url, if direct, just leave empty
+
+        Example:
+        | close all browsers |
+        """
         try:
-            driver_instance = self._make_browser(browser_name, proxy)
+            driver_instance = self._make_browser(browser_name.strip(), proxy)
             driver_instance.get(url)
         except:
             raise
         self._cache.register(driver_instance, alias)
 
     def close_all_browsers(self):
+        """Closes the all open browsers in current session.
+        Example:
+        | close all browsers |
+        """
         self._cache.close_all()
 
     def close_browser(self):
-        """Closes the current browser."""
+        """Closes the current browser.
+        Example:
+        | close browser |
+        """
         if self._cache.current:
             self._cache.close()
 
+    def switch_window(self, title_or_url):
+        """When click on a link opening a new window such as www.baidu.com
+        we need to switch to the new window and continue the operation
+        Example:
+        | switch window         | 百度一下， 你就知道   |
+        | set value by id       | kw                    | test |
+        | click element by id   | su                    |
+        """
+        all_windows = self._current_browser().window_handles
+        for window in all_windows:
+            self._current_browser().switch_to.window(window)
+            url = self.get_url()
+            title = self.get_title()
+            if title.lower() == title_or_url.lower() or url.lower() == title_or_url.lower():
+                break
+
+    def switch_window_contains(self, title_or_url):
+        """When click on a link opening a new window such as www.baidu.com
+        we need to switch to the new window and continue the operation
+        Example:
+        | switch window contains    | 百度一下， 你就       |
+        | set value by id           | kw                    | test |
+        | click element by id       | su                    |
+        """
+        all_windows = self._current_browser().window_handles
+        for window in all_windows:
+            self._current_browser().switch_to.window(window)
+            url = self.get_url()
+            title = self.get_title()
+            if title_or_url.lower() in url.lower() or title_or_url in title.lower():
+                break
+
+
+
     def switch_browser(self, index_or_alias):
         """Switches between active browsers using index or alias.
+        Index is returned from `Open Browser` and alias can be given to it.
 
-                Index is returned from `Open Browser` and alias can be given to it.
+        Example:
+        | Open Browser          | http://google.com | ff       |
+        | URL Should Be         | http://google.com |          |
+        | Open Browser          | http://yahoo.com  | ie       | 2nd conn |
+        | URL Should Be         | http://yahoo.com  |          |
+        | Switch Browser        | 1                 | # index  |
+        | Switch Browser        | 2nd conn          | # alias  |
+        | Close All Browsers    |                   |          |
 
-                Example:
-                | Open Browser        | http://google.com | ff       |
-                | URL Should Be  | http://google.com |          |
-                | Open Browser        | http://yahoo.com  | ie       | 2nd conn |
-                | URL Should Be  | http://yahoo.com  |          |
-                | Switch Browser      | 1                 | # index  |
-                | Page Should Contain | I'm feeling lucky |          |
-                | Switch Browser      | 2nd conn          | # alias  |
-                | Page Should Contain | More Yahoo!       |          |
-                | Close All Browsers  |                   |          |
+        Above example expects that there was no other open browsers when
+        opening the first one because it used index '1' when switching to it
+        later. If you aren't sure about that you can store the index into
+        a variable as below.
 
-                Above example expects that there was no other open browsers when
-                opening the first one because it used index '1' when switching to it
-                later. If you aren't sure about that you can store the index into
-                a variable as below.
-
-                | ${id} =            | Open Browser  | http://google.com | *firefox |
-                | # Do something ... |
-                | Switch Browser     | ${id}         |                   |          |
-                """
+        | ${id} =            | Open Browser  | http://google.com | *firefox |
+        | # Do something ... |
+        | Switch Browser     | ${id}         |                   |          |
+        """
         try:
             self._cache.switch(index_or_alias)
         except (RuntimeError, DataError):  # RF 2.6 uses RE, earlier DE
             raise RuntimeError("No browser with index or alias '%s' found." % index_or_alias)
 
     def maximize_browser_window(self):
-        """Maximizes current browser window."""
+        """Maximizes current browser window.
+        Example:
+        | maximize browser window |
+        """
         self._current_browser().maximize_window()
 
     def set_window_size(self, width, height):
@@ -108,90 +165,149 @@ class BrowserManager(KeywordGroup):
         return size['width'], size['height']
 
     def get_url(self):
-        """Returns the current location."""
+        """Returns the current location.
+        Example:
+       |${url}=| get url |
+        """
         return self._current_browser().current_url
 
     def url_should_be(self, url):
-        """Verifies that current URL is exactly `url`."""
+        """Verifies that current URL is exactly `url`.
+        Example:
+        | url should be | ${url} |
+        """
         actual = self.get_url()
         if actual != url:
-            raise AssertionError("Location should have been '%s' but was '%s'"
+            raise AssertionError("URL should have been '%s' but was '%s'"
                                  % (url, actual))
 
     def url_should_contain(self, expected):
-        """Verifies that current URL contains `expected`."""
+        """Verifies that current URL contains `expected`.
+        Example:
+        | url should contain | ${expected} |
+        """
         actual = self.get_url()
         if expected not in actual:
-            raise AssertionError("Location should have contained '%s' "
+            raise AssertionError("URL should have contained '%s' "
                                  "but it was '%s'." % (expected, actual))
 
     def get_title(self):
-        """Returns title of current page."""
+        """Returns title of current page.
+        Example:
+        |${title}=| get title |
+        """
         return self._current_browser().title
 
     def title_should_be(self, title):
-        """Verifies that current page title equals `title`."""
-        actual = self.get_title()
-        if actual != title:
+        """Verifies that current page title equals `title`.
+        Example:
+        | title should contain | 百度一下， 你就知道 |
+        """
+        actual = self.get_title().strip()
+        if actual != title.strip():
             raise AssertionError("Title should have been '%s' but was '%s'"
                                  % (title, actual))
 
     def title_should_contain(self, expected):
-        """Verifies that current page title equals `title`."""
+        """Verifies that current page title equals `title`.
+        Example:
+        | title should contain | 百度一下 |
+        """
         actual = self.get_title()
         if expected not in actual:
             raise AssertionError("Title should have contained '%s' but was '%s'"
                                  % (expected, actual))
 
     def go_back(self):
-        """Simulates the user clicking the "back" button on their browser."""
+        """Simulates the user clicking the "back" button on their browser.
+        Example:
+        | go back |
+        """
         self._current_browser().back()
 
     def go_to(self, url):
-        """Navigates the active browser instance to the provided URL."""
+        """Navigates the active browser instance to the provided URL.
+        Example:
+        | go to | http://www.baidu.com |
+        """
         self._current_browser().get(url)
 
     def reload_page(self):
-        """Simulates user reloading page."""
+        """Simulates user reloading page.
+        Example:
+        | accept alert |
+        """
         self._current_browser().refresh()
 
     def accept_alert(self):
+        """
+        Accept the alert available.
+        Example:
+        | accept alert |
+        """
         self._current_browser().switch_to().alert().accept()
 
     def dismiss_alert(self):
+        """
+        Dismisses the alert available.
+        Example:
+        | dismiss alert |
+        """
         self._current_browser().switch_to().alert().dismiss()
 
-    def authenticate_alert(self):
-        self._current_browser().switch_to.alert.authenticate()
+    def authenticate_alert(self, username, password):
+        """
+        Send the username / password to an Authenticated dialog (like with Basic HTTP Auth).
+        Implicitly 'clicks ok'
+        :Args:
+        -username: string to be set in the username section of the dialog
+        -password: string to be set in the password section of the dialog
+        Example:
+        | authenticate alert | username | password |
+        """
+        self._current_browser().switch_to.alert.authenticate(username, password)
 
     def set_browser_implicit_wait(self, seconds):
+        """All the window running selenium will by impacted by this setting.
+
+        Example:
+        | Set Browser Implicit Wait | 15 seconds |
+        | Open page that loads slowly |
+        | Set Browser Implicit Wait | 20s |
+        """
         implicit_wait_in_secs = robot.utils.timestr_to_secs(seconds)
         self._current_browser().implicitly_wait(implicit_wait_in_secs)
 
+    def set_global_implicit_wait(self, seconds):
+        """This function will set global selenium implicit wait time out,
+        it will impact all the running test. So consider your purpose before you use it.
+        Example:
+        | ${orig timeout} = | Set global Implicit Wait | 10 seconds |
+        | Perform AJAX call that is slow |
+        | Set Global Implicit Wait | ${orig timeout} |
+        """
+        old_wait = self._default_implicit_wait_in_secs
+        self._default_implicit_wait_in_secs = robot.utils.timestr_to_secs(seconds)
+        for driver_instance in self._cache.get_open_browsers():
+            driver_instance.implicitly_wait(self._default_implicit_wait_in_secs)
+        return old_wait
+
     def set_browser_script_timeout(self, seconds):
-        """Sets the timeout in seconds used by various keywords.
-
-        There are several `Wait ...` keywords that take timeout as an
-        argument. All of these timeout arguments are optional. The timeout
-        used by all of them can be set globally using this keyword.
-        See `Timeouts` for more information about timeouts.
-
-        The previous timeout value is returned by this keyword and can
-        be used to set the old value back later. The default timeout
-        is 5 seconds, but it can be altered in `importing`.
+        """All the window running selenium will by impacted by this setting.
 
         Example:
-        | ${orig timeout} = | Set Selenium Timeout | 15 seconds |
+        | Set Browser Script Timeout | 15 seconds |
         | Open page that loads slowly |
-        | Set Selenium Timeout | ${orig timeout} |
+        | Set Browser Script Timeout | 20s |
         """
         _timeout_in_secs = robot.utils.timestr_to_secs(seconds)
         self._current_browser().set_script_timeout(_timeout_in_secs)
 
     def set_global_script_timeout(self, seconds):
-        """
+        """This function will set global javascript wait time out,
+        it will impact all the running test. So consider your purpose before you use it.
         Example:
-        | ${orig timeout} = | Set Selenium Timeout | 15 seconds |
+        | ${orig timeout} = | Set Global Script Timeout | 15 seconds |
         | Open page that loads slowly |
         | Set Selenium Timeout | ${orig timeout} |
         """
@@ -200,19 +316,6 @@ class BrowserManager(KeywordGroup):
         for driver_instance in self._cache.get_open_browsers():
             driver_instance.set_script_timeout(self._default_script_timeout_in_secs)
         return old_timeout
-
-    def set_global_implicit_wait(self, seconds):
-        """
-        Example:
-        | ${orig wait} = | Set Selenium Implicit Wait | 10 seconds |
-        | Perform AJAX call that is slow |
-        | Set Selenium Implicit Wait | ${orig wait} |
-        """
-        old_wait = self._default_implicit_wait_in_secs
-        self._default_implicit_wait_in_secs = robot.utils.timestr_to_secs(seconds)
-        for driver_instance in self._cache.get_open_browsers():
-            driver_instance.implicitly_wait(self._default_implicit_wait_in_secs)
-        return old_wait
 
     def _current_browser(self):
         if not self._cache.current:
@@ -234,7 +337,7 @@ class BrowserManager(KeywordGroup):
         return driver_instance
 
     def _make_ff(self, proxy=None):
-        cur_path = os.path.split(os.path.realpath(__file__))[0]
+        cur_path = os.path.dirname(os.path.realpath(__file__))
         cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'geckodriver.log'
         fp = None
         if System.get_os_name().lower() == 'windows':
@@ -268,7 +371,7 @@ class BrowserManager(KeywordGroup):
                                  firefox_binary=binary, firefox_profile=firefox_profile, log_path=cur_path)
 
     def _make_ie(self, proxy=None):
-        cur_path = os.path.split(os.path.realpath(__file__))[0]
+        cur_path = os.path.dirname(os.path.realpath(__file__))
         cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'ie.log'
         ie_capabilities = DesiredCapabilities.INTERNETEXPLORER
         ie_capabilities['ignoreProtectedModeSettings'] = True
@@ -281,7 +384,7 @@ class BrowserManager(KeywordGroup):
                             capabilities=ie_capabilities, log_file=cur_path, log_level='INFO')
 
     def _make_chrome(self, proxy=None):
-        cur_path = os.path.split(os.path.realpath(__file__))[0]
+        cur_path = os.path.dirname(os.path.realpath(__file__))
         cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'chrome.log'
         chrome_capabilities = webdriver.DesiredCapabilities.CHROME
         chrome_capabilities['chromeOptions'] = {"args": ["--disable-extensions"], "extensions": []}
@@ -291,7 +394,7 @@ class BrowserManager(KeywordGroup):
 
     def _make_edge(self, proxy=None):
         if hasattr(webdriver, 'Edge'):
-            cur_path = os.path.split(os.path.realpath(__file__))[0]
+            cur_path = os.path.dirname(os.path.realpath(__file__))
             cur_path = cur_path + os.sep + ".." + os.sep + 'log' + os.sep + 'edge.log'
             edge_capabilities = DesiredCapabilities.EDGE
             edge_capabilities['edge.usePerProcessProxy'] = True
@@ -308,7 +411,7 @@ class BrowserManager(KeywordGroup):
         default = default + os.sep + '..' + os.sep + "resource" + os.sep + "driver"
         _browser = browser.lower()
         if _browser == "chrome":
-            default = default + os.sep + _browser + os.sep + self.__chromeDriverVersion
+            default = default + os.sep + _browser + os.sep + self.chrome_driver_version
             if System.get_os_name() == "linux":
                 if System.is64bit():
                     default = default + os.sep + "linux64"
@@ -319,11 +422,11 @@ class BrowserManager(KeywordGroup):
                 default = default + os.sep + "win32" + os.sep + "chromedriver.exe"
 
         elif _browser == "edge":
-            default = default + os.sep + _browser + os.sep + self.__EdgeDriverVersion \
+            default = default + os.sep + _browser + os.sep + self.edge_driver_version \
                       + os.sep + "MicrosoftWebDriver.exe"
 
         elif _browser == "firefox":
-            default = default + os.sep + _browser + os.sep + self.__firefoxDriverVersion
+            default = default + os.sep + _browser + os.sep + self.firefox_driver_version
             if System.get_os_name() == "linux":
                 if System.is64bit():
                     default = default + os.sep + "linux64"
@@ -338,7 +441,7 @@ class BrowserManager(KeywordGroup):
                 default = default + os.sep + "geckodriver.exe"
 
         elif _browser == "ie":
-            default = default + os.sep + _browser + os.sep + self.__ieDriverVersion
+            default = default + os.sep + _browser + os.sep + self.ie_driver_version
             # Use win32 for IE driver only because of performance issue.
             # if (self.__is64bit()):
             #     default = default + os.path.sep + "win64"

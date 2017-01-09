@@ -6,5 +6,7 @@ MANIFEST
 .*project
 *.pyc
 .DS_Store
-robotframework_bjrobot.egg-info
+src/BJRobot/log/*.log
 src/robotframework_bjrobot.egg-info
+test.py
+*.png
