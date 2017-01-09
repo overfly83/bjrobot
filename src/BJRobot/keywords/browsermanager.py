@@ -50,9 +50,16 @@ class BrowserManager(KeywordGroup):
             edge
         3. Proxy support manual and direct
             If manual, please give a proxy url, if direct, just leave empty
-
+        4. Set browser alias for further browser switching purpose.
         Example:
-        | close all browsers |
+        | open browser          | chrome                | http://proxy:8083/    | browserA |
+        | open browser          | ie                    |                       | browserB |
+        | switch browser        | browserA              |
+        | set value by id       | kw                    | test |
+        | click element by id   | su                    |
+        | open browser | chrome | http://proxy:8083/ | browserA |
+        | switch browser        | browserB              |
+        | do something...       |                       |
         """
         try:
             driver_instance = self._make_browser(browser_name.strip(), proxy)
