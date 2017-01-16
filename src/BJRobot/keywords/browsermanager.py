@@ -68,6 +68,25 @@ class BrowserManager(KeywordGroup):
             raise
         self._cache.register(driver_instance, alias)
 
+    def open_new_window(self, url):
+        """
+        Open a new window in current browser, must in an existing browser
+        :param url: the target url to be open and navigate to.
+        :return: no return
+        Example:
+        | open new window | http://www.baidu.com |
+        """
+        js = "window.open('%s')" % url
+        self._current_browser().execute_script(js)
+
+    def close_window(self):
+        """
+        Close current window
+        :return: none
+        """
+        js = "window.close()"
+        self._current_browser().execute_script(js)
+
     def close_all_browsers(self):
         """Closes the all open browsers in current session.
         Example:
@@ -114,8 +133,6 @@ class BrowserManager(KeywordGroup):
             title = self.get_title()
             if title_or_url.lower() in url.lower() or title_or_url in title.lower():
                 break
-
-
 
     def switch_browser(self, index_or_alias):
         """Switches between active browsers using index or alias.
@@ -457,3 +474,16 @@ class BrowserManager(KeywordGroup):
             # default = default + os.path.sep + "IEDriverServer.exe"
             default = default + os.sep + "win32" + os.sep + "IEDriverServer.exe"
         return default
+
+    def _test(self, by, value):
+        driver = webdriver.Chrome()
+
+        try:
+            driver.implicitly_wait(1)
+            element_list = driver.find_elements(by, value)
+            for element in element_list:
+                if element.is_displayed():
+                    driver.implicitly_wait(self._default_implicit_wait_in_secs)
+                    return element
+        except:
+            raise
