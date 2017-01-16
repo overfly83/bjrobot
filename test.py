@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from BJRobot import *
-import time
+from selenium.webdriver.common.by import By
 
 aa = BJRobot()
 try:
@@ -16,6 +16,8 @@ try:
     aa.set_value_by_id('sb_form_q','test')
     aa.click_element_by_id('sb_form_go')
     aa.find_element_by_xpath("//li[@class='b_ans' and @data-bm='7']")
+    print aa.is_element_present(by=By.ID, value="ddd", timeout=10)
     aa.close_browser()
+
 finally:
     aa.close_all_browsers()

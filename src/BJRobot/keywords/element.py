@@ -7,6 +7,7 @@ import time
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.keys import Keys
 
+
 class Element(KeywordGroup):
 
     def __init__(self):
@@ -19,7 +20,7 @@ class Element(KeywordGroup):
         Example:
         | find element | 'id' | kw | 30 |
         """
-        return self._safe_find(by, value, timeout)
+        return self._safe_find(by=by, value=value, timeout=timeout)
 
     def find_element_by_class(self, class_name, timeout=30):
         """
@@ -92,7 +93,7 @@ class Element(KeywordGroup):
         Example:
         | find elements | xpath | //div | 30 |
         """
-        return self._safe_finds(by, value, timeout)
+        return self._safe_finds(by=by, value=value, timeout=timeout)
 
     def find_elements_by_class(self, class_name, timeout=30):
         """
@@ -164,7 +165,7 @@ class Element(KeywordGroup):
         Example:
         | element should contain text | id | kw | expectedtext |
         """
-        actual = self._get_text(by, value, timeout)
+        actual = self._get_text(by=by, value=value, timeout=timeout)
         if expected not in actual:
             message = "Element '%s' should have contained text '%s' but " \
                       "its text was '%s'." % ((by, value), expected, actual)
@@ -176,7 +177,7 @@ class Element(KeywordGroup):
         Example:
         | element should not contain text | id | kw | expectedtext |
         """
-        actual = self._get_text(by, value, timeout)
+        actual = self._get_text(by=by, value=value, timeout=timeout)
         if expected in actual:
             message = "Element '%s' should not have contained text '%s' but " \
                       "its text was '%s'." % ((by, value), expected, actual)
@@ -188,7 +189,7 @@ class Element(KeywordGroup):
         Example:
         | element should contain value | id | kw | expectedvalue |
         """
-        actual = self._get_value(by, value, timeout)
+        actual = self._get_value(by=by, value=value, timeout=timeout)
         if expected not in actual:
             message = "Element '%s' should have contained text '%s' but " \
                       "its text was '%s'." % ((by, value), expected, actual)
@@ -200,7 +201,7 @@ class Element(KeywordGroup):
         Example:
         | element should not contain text | id | kw | expectedvalue |
         """
-        actual = self._get_value(by, value, timeout)
+        actual = self._get_value(by=by, value=value, timeout=timeout)
         if expected in actual:
             message = "Element '%s' should not have contained text '%s' but " \
                       "its text was '%s'." % ((by, value), expected, actual)
@@ -212,7 +213,7 @@ class Element(KeywordGroup):
         Example:
         | element should be enabled | id | kw |
         """
-        if not self.is_element_enabled(by, value, timeout):
+        if not self.is_element_enabled(by=by, value=value, timeout=timeout):
             message = "Element '%s' is not enabled currently." % (by, value).__str__()
             raise AssertionError(message)
 
@@ -222,9 +223,17 @@ class Element(KeywordGroup):
         Example:
         | element should not be enabled | id | kw |
         """
-        if self.is_element_enabled(by, value, timeout):
+        if self.is_element_enabled(by=by, value=value, timeout=timeout):
             message = "Element '%s' is enabled currently." % (by, value).__str__()
             raise AssertionError(message)
+
+    def click_element(self, by=By.ID, value=None, timeout=30):
+        """
+        Click the element by its element locator
+        Example:
+        | click element | id | kw |
+        """
+        self._safe_find(by, value, timeout).click()
 
     def click_element_by_id(self, id_, timeout=30):
         """
@@ -250,13 +259,14 @@ class Element(KeywordGroup):
         """
         self.click_element(by=By.XPATH, value=xpath, timeout=timeout)
 
-    def click_element(self, by=By.ID, value=None, timeout=30):
+    def double_click_element(self, by=By.ID, value=None, timeout=30):
         """
-        Click the element by its element locator
+        Double Click the element by its element locator
         Example:
-        | click element | id | kw |
+        | double click element | id |kw |
         """
-        self._safe_find(by, value, timeout).click()
+        element = self.find_element(by, value, timeout)
+        ActionChains(self._get_current_browser()).double_click(element).perform()
 
     def double_click_element_by_id(self, id_, timeout=30):
         """
@@ -282,14 +292,15 @@ class Element(KeywordGroup):
         """
         self.double_click_element(by=By.XPATH, value=xpath, timeout=timeout)
 
-    def double_click_element(self, by=By.ID, value=None, timeout=30):
+    def click_element_at_coordinates(self, by=By.ID, value=None, xoffset=0, yoffset=0, timeout=30):
         """
-        Double Click the element by its element locator
+        Click the element by horizontal offset and vertical offset by its element locator
         Example:
-        | double click element | id |kw |
+        | click element at coordinates | id | kw | 50 | 80 |
         """
-        element = self.find_element(by, value, timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
+        element = self.find_element(by=by, value=value, timeout=timeout)
+        ActionChains(self._get_current_browser()).move_to_element(element).\
+            move_by_offset(xoffset, yoffset).click().perform()
 
     def click_element_at_coordinates_by_id(self, id_, xoffset=0, yoffset=0, timeout=30):
         """
@@ -315,24 +326,14 @@ class Element(KeywordGroup):
         """
         self.click_element_at_coordinates(by=By.XPATH, value=xpath, xoffset=xoffset, yoffset=yoffset, timeout=timeout)
 
-    def click_element_at_coordinates(self, by=By.ID, value=None, xoffset=0, yoffset=0, timeout=30):
-        """
-        Click the element by horizontal offset and vertical offset by its element locator
-        Example:
-        | click element at coordinates | id | kw | 50 | 80 |
-        """
-        element = self.find_element(by, value, timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element).\
-            move_by_offset(xoffset, yoffset).click().perform()
-
     def drag_and_drop(self, source_by=By.ID, source_value=None, target_by=By.ID, target_value=None, timeout=30):
         """
         Drag and drop the element from source element to target element
         Example:
         | drag and drop | id | kw | name | ki |
         """
-        src_elem = self.find_element(source_by, source_value, timeout)
-        trg_elem = self.find_element(target_by, target_value, timeout)
+        src_elem = self.find_element(by=source_by, value=source_value, timeout=timeout)
+        trg_elem = self.find_element(by=target_by, value=target_value, timeout=timeout)
         ActionChains(self._get_current_browser()).drag_and_drop(src_elem, trg_elem).perform()
 
     def drag_and_drop_by_xpath(self, source_xpath, target_xpath, timeout=30):
@@ -350,7 +351,7 @@ class Element(KeywordGroup):
         Example:
         | drag and drop by offset | id | kw | 30 | 60 | 10s |
         """
-        src_elem = self.find_element(by, value, timeout)
+        src_elem = self.find_element(by=by, value=value, timeout=timeout)
         ActionChains(self._get_current_browser()).drag_and_drop_by_offset(src_elem, xoffset, yoffset).perform()
 
     def drag_and_drop_with_offset_by_xpath(self, xpath, xoffset, yoffset, timeout=30):
@@ -366,17 +367,10 @@ class Element(KeywordGroup):
         Example:
         | mouse down | id | kw |
         """
-        element = self.find_element(by, value, timeout)
+        element = self.find_element(by=by, value=value, timeout=timeout)
         if element is None:
             raise AssertionError("ERROR: Element %s not found." % (by, value).__str__())
         ActionChains(self._get_current_browser()).click_and_hold(element).perform()
-
-    def mouse_down_by_xpath(self, xpath, timeout=30):
-        """press mouse down on element by xpath
-        Example:
-        | mouse down by xpath | //div[@class='hello'] |
-        """
-        self.mouse_down(by=By.XPATH, value=xpath, timeout=timeout)
 
     def mouse_down_by_id(self, id_, timeout=30):
         """press mouse down on element by id
@@ -391,6 +385,13 @@ class Element(KeywordGroup):
         | mouse down by name | kw |
         """
         self.mouse_down(by=By.NAME, value=name, timeout=timeout)
+
+    def mouse_down_by_xpath(self, xpath, timeout=30):
+        """press mouse down on element by xpath
+        Example:
+        | mouse down by xpath | //div[@class='hello'] |
+        """
+        self.mouse_down(by=By.XPATH, value=xpath, timeout=timeout)
 
     def set_value(self, by=By.ID, value=None, key=None, timeout=30, enter=False):
         """set value on a certain element by its locator
@@ -426,6 +427,19 @@ class Element(KeywordGroup):
         """
         self.set_value(by=By.XPATH, value=xpath, key=key, timeout=timeout, enter=enter)
 
+    def is_element_enabled(self, by=By.ID, value=None, timeout=30):
+        """return if the element is enabled
+        Example:
+        | ${enabled}=|is element enabled | id | kw |
+        """
+        element = self.find_element(by, value, timeout)
+        if not element.is_enabled():
+            return False
+        read_only = element.get_attribute('readonly')
+        if read_only == 'readonly' or read_only == 'true':
+            return False
+        return True
+
     def is_element_enabled_by_id(self, id_, timeout=30):
         """return if the element is enabled by id
         Example:
@@ -447,18 +461,16 @@ class Element(KeywordGroup):
         """
         return self.is_element_enabled(by=By.XPATH, value=xpath, timeout=timeout)
 
-    def is_element_enabled(self, by=By.ID, value=None, timeout=30):
-        """return if the element is enabled
+    def is_element_visible(self, by=By.ID, value=None, timeout=30):
+        """return if the element is visible by locator
+        If you don't understand what present differ from visible, please use visible instead.
         Example:
-        | ${enabled}=|is element enabled | id | kw |
+        | ${enabled}=|is element visible | id | kw |
         """
-        element = self.find_element(by, value, timeout)
-        if not element.is_enabled():
-            return False
-        read_only = element.get_attribute('readonly')
-        if read_only == 'readonly' or read_only == 'true':
-            return False
-        return True
+        element = self.find_element(by=by, value=value, timeout=timeout)
+        if element is not None:
+            return element.is_displayed()
+        return False
 
     def is_element_visible_by_id(self, id_, timeout=30):
         """return if the element is visible by id
@@ -484,41 +496,6 @@ class Element(KeywordGroup):
         """
         return self.is_element_visible(by=By.XPATH, value=xpath, timeout=timeout)
 
-    def is_element_visible(self, by=By.ID, value=None, timeout=30):
-        """return if the element is visible by locator
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element visible | id | kw |
-        """
-        element = self.find_element(by, value, timeout)
-        if element is not None:
-            return element.is_displayed()
-        return None
-
-    def is_element_present_by_id(self, id_, timeout=30):
-        """return if the element is present by id
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by id | kw |
-        """
-        return self.is_element_present(by=By.ID, value=id_, timeout=timeout) is not None
-
-    def is_element_present_by_name(self, name, timeout=30):
-        """return if the element is present by name
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by name | kw |
-        """
-        return self.is_element_present(by=By.NAME, value=name, timeout=timeout) is not None
-
-    def is_element_present_by_xpath(self, xpath, timeout=30):
-        """return if the element is present by xpath
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by xpath | //div[@class='hello'] |
-        """
-        return self.is_element_present(by=By.XPATH, value=xpath, timeout=timeout) is not None
-
     def is_element_present(self, by=By.ID, value=None, timeout=30):
         """return if the element is present by locator
         If you don't understand what present differ from visible, please use visible instead.
@@ -526,6 +503,30 @@ class Element(KeywordGroup):
         | ${enabled}=|is element present | name | kw |
         """
         return self.find_element(by, value, timeout) is not None
+
+    def is_element_present_by_id(self, id_, timeout=30):
+        """return if the element is present by id
+        If you don't understand what present differ from visible, please use visible instead.
+        Example:
+        | ${enabled}=|is element present by id | kw |
+        """
+        return self.is_element_present(by=By.ID, value=id_, timeout=timeout)
+
+    def is_element_present_by_name(self, name, timeout=30):
+        """return if the element is present by name
+        If you don't understand what present differ from visible, please use visible instead.
+        Example:
+        | ${enabled}=|is element present by name | kw |
+        """
+        return self.is_element_present(by=By.NAME, value=name, timeout=timeout)
+
+    def is_element_present_by_xpath(self, xpath, timeout=30):
+        """return if the element is present by xpath
+        If you don't understand what present differ from visible, please use visible instead.
+        Example:
+        | ${enabled}=|is element present by xpath | //div[@class='hello'] |
+        """
+        return self.is_element_present(by=By.XPATH, value=xpath, timeout=timeout)
 
     def _get_text_by_id(self, id_, timeout=30):
         return self._get_text(by=By.ID, value=id_, timeout=timeout)
@@ -538,9 +539,7 @@ class Element(KeywordGroup):
 
     def _get_text(self, by=By.ID, value=None, timeout=30):
         element = self.find_element(by, value, timeout)
-        if element is not None:
-            return element.text
-        return None
+        return element.text if element is not None else None
 
     def _get_value_by_id(self, id_, timeout=30):
         return self._get_value(by=By.ID, value=id_, timeout=timeout)
@@ -568,12 +567,17 @@ class Element(KeywordGroup):
                 for element in element_list:
                     if element.is_displayed():
                         _driver.implicitly_wait(self.__default_implicit_wait_in_secs)
+                        # print "debug time taken for safe_find is %s millisecond for element %s" % (
+                        # int(round(time.time() * 1000)) - start, (by, value).__str__())
                         return element
             except:
                 pass
             finally:
                 _driver.implicitly_wait(self.__default_implicit_wait_in_secs)
-        raise RuntimeError("Could not find element %s within timeout %s seconds: " % (by, value).__str__(), timeout)
+                # print "debug time taken for safe_find is %s millisecond" % (int(round(time.time() * 1000)) - start)
+        raise RuntimeError("Could not find element %s within timeout %s seconds: " %
+                           ((by, value).__str__(), int(round(time.time() * 1000)) - start)
+                           )
 
     def _safe_finds(self, by, value, timeout=30):
         start = int(round(time.time() * 1000))
@@ -591,4 +595,6 @@ class Element(KeywordGroup):
                 pass
             finally:
                 _driver.implicitly_wait(self.__default_implicit_wait_in_secs)
-        raise RuntimeError("Could not find element %s within timeout %s seconds: " % (by, value).__str__(), timeout)
+        raise RuntimeError("Could not find element %s within timeout %s seconds: " %
+                           ((by, value).__str__(), int(round(time.time() * 1000)) - start)
+                           )
