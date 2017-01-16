@@ -5,7 +5,7 @@ from keywordgroup import KeywordGroup
 from BJRobot.utilities import System
 import time
 from selenium.webdriver.support import expected_conditions as ec
-
+from selenium.webdriver.common.keys import Keys
 
 class Element(KeywordGroup):
 
@@ -232,7 +232,7 @@ class Element(KeywordGroup):
         Example:
         | click element by id | id |
         """
-        self.find_element_by_id(id_, timeout).click()
+        self.click_element(by=By.ID, value=id_, timeout=timeout)
 
     def click_element_by_name(self, name, timeout=30):
         """
@@ -240,7 +240,7 @@ class Element(KeywordGroup):
         Example:
         | click element by name | name |
         """
-        self.find_element_by_name(name, timeout).click()
+        self.click_element(by=By.NAME, value=name, timeout=timeout)
 
     def click_element_by_xpath(self, xpath, timeout=30):
         """
@@ -248,7 +248,7 @@ class Element(KeywordGroup):
         Example:
         | click element by xpath | //div[@class='hello'] |
         """
-        self.find_element_by_xpath(xpath, timeout).click()
+        self.click_element(by=By.XPATH, value=xpath, timeout=timeout)
 
     def click_element(self, by=By.ID, value=None, timeout=30):
         """
@@ -264,8 +264,7 @@ class Element(KeywordGroup):
         Example:
         | double click element by id | kw |
         """
-        element = self.find_element_by_id(id_, timeout=timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
+        self.double_click_element(by=By.ID, value=id_, timeout=timeout)
 
     def double_click_element_by_name(self, name, timeout=30):
         """
@@ -273,8 +272,7 @@ class Element(KeywordGroup):
         Example:
         | double click element by name | kw |
         """
-        element = self.find_element_by_name(name, timeout=timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
+        self.double_click_element(by=By.NAME, value=name, timeout=timeout)
 
     def double_click_element_by_xpath(self, xpath, timeout=30):
         """
@@ -282,8 +280,7 @@ class Element(KeywordGroup):
         Example:
         | double click element by xpath | //div[@id='kw'] |
         """
-        element = self.find_element_by_xpath(xpath, timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
+        self.double_click_element(by=By.XPATH, value=xpath, timeout=timeout)
 
     def double_click_element(self, by=By.ID, value=None, timeout=30):
         """
@@ -300,9 +297,7 @@ class Element(KeywordGroup):
         Example:
         | click element at coordinates by id | kw | 50 | 80 |
         """
-        element = self.find_element_by_id(id_, timeout=timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element).\
-            move_by_offset(xoffset, yoffset).click().perform()
+        self.click_element_at_coordinates(by=By.ID, value=id_, xoffset=xoffset, yoffset=yoffset, timeout=timeout)
 
     def click_element_at_coordinates_by_name(self, name, xoffset=0, yoffset=0, timeout=30):
         """
@@ -310,9 +305,7 @@ class Element(KeywordGroup):
         Example:
         | click element at coordinates by name | kwname | 50 | 80 |
         """
-        element = self.find_element_by_name(name, timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element).\
-            move_by_offset(xoffset, yoffset).click().perform()
+        self.click_element_at_coordinates(by=By.NAME, value=name, xoffset=xoffset, yoffset=yoffset, timeout=timeout)
 
     def click_element_at_coordinates_by_xpath(self, xpath, xoffset=0, yoffset=0, timeout=30):
         """
@@ -320,9 +313,7 @@ class Element(KeywordGroup):
         Example:
         | click element at coordinates by xpath | //div[@class='hello'] | 50 | 80 |
         """
-        element = self.find_element_by_xpath(xpath, timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element).\
-            move_by_offset(xoffset, yoffset).click().perform()
+        self.click_element_at_coordinates(by=By.XPATH, value=xpath, xoffset=xoffset, yoffset=yoffset, timeout=timeout)
 
     def click_element_at_coordinates(self, by=By.ID, value=None, xoffset=0, yoffset=0, timeout=30):
         """
@@ -350,27 +341,25 @@ class Element(KeywordGroup):
         Example:
         | drag and drop by xpath | sourcexpath | targetxpath |
         """
-        src_elem = self.find_element_by_xpath(source_xpath, timeout)
-        trg_elem = self.find_element_by_xpath(target_xpath, timeout)
-        ActionChains(self._get_current_browser()).drag_and_drop(src_elem, trg_elem).perform()
+        self.drag_and_drop(source_by=By.XPATH, source_value=source_xpath, target_by=By.XPATH,
+                           target_value=target_xpath, timeout=timeout)
 
-    def drag_and_drop_by_offset(self, source_by=By.ID, source_value=None, xoffset=0, yoffset=0, timeout=30):
+    def drag_and_drop_with_offset(self, by=By.ID, value=None, xoffset=0, yoffset=0, timeout=30):
         """
-        Drag and drop the element from source element to target element by some offset
+        Drag and drop the element within current element by locator by some offset
         Example:
-        | drag and drop by offset | id | kw | id | ks | 30 | 60 |
+        | drag and drop by offset | id | kw | 30 | 60 | 10s |
         """
-        src_elem = self.find_element(source_by, source_value, timeout)
+        src_elem = self.find_element(by, value, timeout)
         ActionChains(self._get_current_browser()).drag_and_drop_by_offset(src_elem, xoffset, yoffset).perform()
 
-    def drag_and_drop_by_offset_by_xpath(self, source_xpath, xoffset, yoffset, timeout=30):
+    def drag_and_drop_with_offset_by_xpath(self, xpath, xoffset, yoffset, timeout=30):
         """
-        Drag and drop the element within element by xpath by some offset
+        Drag and drop the element within current element by xpath by some offset
         Example:
-        | drag and drop by xpath | source_xpath | 50 | 30 |
+        | drag and drop by xpath | element_xpath | 50 | 30 | 10s |
         """
-        src_elem = self.find_element_by_xpath(source_xpath, timeout)
-        ActionChains(self._get_current_browser()).drag_and_drop_by_offset(src_elem, xoffset, yoffset).perform()
+        self.drag_and_drop_with_offset(by=By.XPATH, value=xpath, xoffset=xoffset, yoffset=yoffset, timeout=timeout)
 
     def mouse_down(self, by=By.ID, value=None, timeout=30):
         """press mouse down on element by locator
@@ -387,113 +376,76 @@ class Element(KeywordGroup):
         Example:
         | mouse down by xpath | //div[@class='hello'] |
         """
-        element = self.find_element_by_xpath(xpath, timeout)
-        if element is None:
-            raise AssertionError("ERROR: Element %s not found." % xpath)
-        ActionChains(self._get_current_browser()).click_and_hold(element).perform()
+        self.mouse_down(by=By.XPATH, value=xpath, timeout=timeout)
 
     def mouse_down_by_id(self, id_, timeout=30):
         """press mouse down on element by id
         Example:
         | mouse down by id | kw |
         """
-        element = self.find_element_by_id(id_, timeout)
-        if element is None:
-            raise AssertionError("ERROR: Element %s not found." % id_)
-        ActionChains(self._get_current_browser()).click_and_hold(element).perform()
+        self.mouse_down(by=By.ID, value=id_, timeout=timeout)
 
     def mouse_down_by_name(self, name, timeout=30):
         """press mouse down on element by name
         Example:
         | mouse down by name | kw |
         """
-        element = self.find_element_by_name(name, timeout)
-        if element is None:
-            raise AssertionError("ERROR: Element %s not found." % name)
-        ActionChains(self._get_current_browser()).click_and_hold(element).perform()
+        self.mouse_down(by=By.NAME, value=name, timeout=timeout)
 
-    def set_value(self, by=By.ID, value=None, key=None, timeout=30):
+    def set_value(self, by=By.ID, value=None, key=None, timeout=30, enter=False):
         """set value on a certain element by its locator
         Example:
-        | set value | id | kw |
+        | set value | id | kw | False |
         """
         if key.startswith('\\') and len(key) > 1:
             key = System.map_ascii_key_code_to_key(int(key[1:]))
         element = self.find_element(by, value, timeout)
         element.clear()
         element.send_keys(key)
+        if enter in [True, "true", "True", "TRUE"]:
+            element.send_keys(Keys.ENTER)
 
-    def set_value_by_id(self, id_, key=None, timeout=30):
+    def set_value_by_id(self, id_, key=None, timeout=30, enter=False):
         """set value on a certain element by id
         Example:
         | set value by id | kw |
         """
-        if key.startswith('\\') and len(key) > 1:
-            key = System.map_ascii_key_code_to_key(int(key[1:]))
-        element = self.find_element_by_id(id_, timeout)
-        element.clear()
-        element.send_keys(key)
+        self.set_value(by=By.ID, value=id_, key=key, timeout=timeout, enter=enter)
 
-    def set_value_by_name(self, name, key=None, timeout=30):
+    def set_value_by_name(self, name, key=None, timeout=30, enter=False):
         """set value on a certain element by name
         Example:
         | set value by name | kw |
         """
-        if key.startswith('\\') and len(key) > 1:
-            key = System.map_ascii_key_code_to_key(int(key[1:]))
-        element = self.find_element_by_name(name, timeout)
-        element.clear()
-        element.send_keys(key)
+        self.set_value(by=By.NAME, value=name, key=key, timeout=timeout, enter=enter)
 
-    def set_value_by_xpath(self, xpath, key=None, timeout=30):
+    def set_value_by_xpath(self, xpath, key=None, timeout=30, enter=False):
         """set value on a certain element by xpath
         Example:
         | set value by xpath | //div[@class='hello'] |
         """
-        if key.startswith('\\') and len(key) > 1:
-            key = System.map_ascii_key_code_to_key(int(key[1:]))
-        element = self.find_element_by_xpath(xpath, timeout)
-        element.clear()
-        element.send_keys(key)
+        self.set_value(by=By.XPATH, value=xpath, key=key, timeout=timeout, enter=enter)
 
     def is_element_enabled_by_id(self, id_, timeout=30):
         """return if the element is enabled by id
         Example:
         | ${enabled}=|is element enabled by id | kw |
         """
-        element = self.find_element_by_id(id_, timeout)
-        if not element.is_enabled():
-            return False
-        read_only = element.get_attribute('readonly')
-        if read_only == 'readonly' or read_only == 'true':
-            return False
-        return True
+        return self.is_element_enabled(by=By.ID, value=id_, timeout=timeout)
 
     def is_element_enabled_by_name(self, name, timeout=30):
         """return if the element is enabled by name
         Example:
         | ${enabled}=|is element enabled by name | kw |
         """
-        element = self.find_element_by_name(name, timeout)
-        if not element.is_enabled():
-            return False
-        read_only = element.get_attribute('readonly')
-        if read_only == 'readonly' or read_only == 'true':
-            return False
-        return True
+        return self.is_element_enabled(by=By.NAME, value=name, timeout=timeout)
 
     def is_element_enabled_by_xpath(self, xpath, timeout=30):
         """return if the element is enabled by xpath
         Example:
         | ${enabled}=|is element enabled by xpath | //div[text='hello'] |
         """
-        element = self.find_element_by_xpath(xpath, timeout)
-        if not element.is_enabled():
-            return False
-        read_only = element.get_attribute('readonly')
-        if read_only == 'readonly' or read_only == 'true':
-            return False
-        return True
+        return self.is_element_enabled(by=By.XPATH, value=xpath, timeout=timeout)
 
     def is_element_enabled(self, by=By.ID, value=None, timeout=30):
         """return if the element is enabled
@@ -514,10 +466,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element visible by id | kw |
         """
-        element = self.find_element_by_id(id_, timeout)
-        if element is not None:
-            return element.is_displayed()
-        return None
+        return self.is_element_visible(by=By.ID, value=id_, timeout=timeout)
 
     def is_element_visible_by_name(self, name, timeout=30):
         """return if the element is visible by name
@@ -525,10 +474,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element visible by name | kw |
         """
-        element = self.find_element_by_name(name, timeout)
-        if element is not None:
-            return element.is_displayed()
-        return None
+        return self.is_element_visible(by=By.NAME, value=name, timeout=timeout)
 
     def is_element_visible_by_xpath(self, xpath, timeout=30):
         """return if the element is visible by xpath
@@ -536,10 +482,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element visible by xpath | //div[@class='hello'] |
         """
-        element = self.find_element_by_xpath(xpath, timeout)
-        if element is not None:
-            return element.is_displayed()
-        return None
+        return self.is_element_visible(by=By.XPATH, value=xpath, timeout=timeout)
 
     def is_element_visible(self, by=By.ID, value=None, timeout=30):
         """return if the element is visible by locator
@@ -558,7 +501,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element present by id | kw |
         """
-        return self.find_element_by_id(id_, timeout) is not None
+        return self.is_element_present(by=By.ID, value=id_, timeout=timeout) is not None
 
     def is_element_present_by_name(self, name, timeout=30):
         """return if the element is present by name
@@ -566,7 +509,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element present by name | kw |
         """
-        return self.find_element_by_id(name, timeout) is not None
+        return self.is_element_present(by=By.NAME, value=name, timeout=timeout) is not None
 
     def is_element_present_by_xpath(self, xpath, timeout=30):
         """return if the element is present by xpath
@@ -574,7 +517,7 @@ class Element(KeywordGroup):
         Example:
         | ${enabled}=|is element present by xpath | //div[@class='hello'] |
         """
-        return self.find_element_by_xpath(xpath, timeout) is not None
+        return self.is_element_present(by=By.XPATH, value=xpath, timeout=timeout) is not None
 
     def is_element_present(self, by=By.ID, value=None, timeout=30):
         """return if the element is present by locator
@@ -585,22 +528,13 @@ class Element(KeywordGroup):
         return self.find_element(by, value, timeout) is not None
 
     def _get_text_by_id(self, id_, timeout=30):
-        element = self.find_element_by_id(id_, timeout)
-        if element is not None:
-            return element.text
-        return None
+        return self._get_text(by=By.ID, value=id_, timeout=timeout)
 
     def _get_text_by_name(self, name, timeout=30):
-        element = self.find_element_by_name(name, timeout)
-        if element is not None:
-            return element.text
-        return None
+        return self._get_text(by=By.NAME, value=name, timeout=timeout)
 
     def _get_text_by_xpath(self, xpath, timeout=30):
-        element = self.find_element_by_xpath(xpath, timeout)
-        if element is not None:
-            return element.text
-        return None
+        return self._get_text(by=By.XPATH, value=xpath, timeout=timeout)
 
     def _get_text(self, by=By.ID, value=None, timeout=30):
         element = self.find_element(by, value, timeout)
@@ -609,16 +543,13 @@ class Element(KeywordGroup):
         return None
 
     def _get_value_by_id(self, id_, timeout=30):
-        element = self.find_element_by_id(id_, timeout)
-        return element.get_attribute('value') if element is not None else None
+        return self._get_value(by=By.ID, value=id_, timeout=timeout)
 
     def _get_value_by_name(self, name, timeout=30):
-        element = self.find_element_by_name(name, timeout)
-        return element.get_attribute('value') if element is not None else None
+        return self._get_value(by=By.NAME, value=name, timeout=timeout)
 
     def _get_value_by_xpath(self, xpath, timeout=30):
-        element = self.find_element_by_xpath(xpath, timeout)
-        return element.get_attribute('value') if element is not None else None
+        return self._get_value(by=By.XPATH, value=xpath, timeout=timeout)
 
     def _get_value(self, by=By.ID, value=None, timeout=30):
         element = self.find_element(by, value, timeout)
