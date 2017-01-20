@@ -17,7 +17,7 @@ setup(
     name="robotframework-bjrobot",
     version=VERSION,
     package_dir={'': 'src'},
-    packages=['BJRobot', 'BJRobot.keywords', 'BJRobot.utilities', 'BJRobot.settings'],
+    packages=['BJRobot', 'BJRobot.keywords', 'BJRobot.utilities'],
     include_package_data=True,
     install_requires=REQUIREMENTS,
     author="edward zhang",
