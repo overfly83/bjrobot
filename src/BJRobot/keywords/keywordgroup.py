@@ -30,6 +30,7 @@ def _run_on_failure_decorator(method, *args, **kwargs):
             self._has_run_on_failure = False
 
 class KeywordGroupMetaClass(type):
+
     def __new__(cls, clsname, bases, dict):
         if decorator:
             for name, method in dict.items():

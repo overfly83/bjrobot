@@ -2,6 +2,7 @@ import os
 import errno
 import platform
 from selenium.webdriver.common.keys import Keys
+import ConfigParser
 
 
 class System:
@@ -17,6 +18,12 @@ class System:
                 return fp
             elif os.path.isdir(fp):
                 cls.search_file_contains(fp, keyword)
+
+    @staticmethod
+    def read_config_param(section, option):
+        cf = ConfigParser.ConfigParser()
+        cf.read('..' + os.sep + 'settings' + os.sep + 'platform.cfg')
+        print cf.get(section=section, option=option)
 
     @staticmethod
     def create_directory(path):
@@ -94,3 +101,6 @@ class System:
                 "proxyType": "DIRECT",
                 "autodetect": False
             }
+
+# if __name__ == '__main__':
+#     System.read_config_param('ipad', 'deviceName')
