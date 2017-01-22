@@ -22,9 +22,20 @@ try:
     aa.click_element_by_id('sb_form_go')
     aa.find_element_by_xpath("//li[@class='b_ans' and @data-bm='7']")
     aa.find_element("xpath=//li[@class='b_ans' and @data-bm='7']")
-
     # print aa.is_element_present("id=ddd", timeout=1)
     aa.close_browser()
 
+
+    aa.open_application('http://127.0.0.1:4723/wd/hub', platformName='Android', platformVersion='4.2.2', deviceName='tesddt', app='e:/robotframework-appiumlibrary/demo/demoapp/ContactManager.apk', automationName='appium')
+    aa.click_element_m('id=com.example.android.contactmanager:id/addContactButton')
+    aa.input_text_m('id=com.example.android.contactmanager:id/contactNameEditText', 'appium user')
+    aa.input_text_m('id=com.example.android.contactmanager:id/contactPhoneEditText', '55554446666')
+    aa.input_text_m('id=com.example.android.contactmanager:id/contactEmailEditText', 'demo@io.com')
+    aa.click_element_m('accessibility_id=Save')
+    aa.close_application()
+
 finally:
     aa.close_all_browsers()
+    aa.close_all_applications()
+
+
