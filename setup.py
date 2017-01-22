@@ -16,6 +16,8 @@ with open(join(CURDIR, 'REQUIREMENTS.txt')) as f:
 setup(  
     name="robotframework-bjrobot",
     version=VERSION,
+    url='https://github.com/overfly83/bjrobot',
+    license='Apache License 2.0',
     package_dir={'': 'src'},
     packages=['BJRobot', 'BJRobot.keywords', 'BJRobot.utilities', 'BJRobot.locators'],
     include_package_data=True,
