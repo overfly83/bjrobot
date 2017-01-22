@@ -24,7 +24,7 @@ class Mobile_Element(KeywordGroup):
         self._bi = BuiltIn()
 
     # Public, element lookups
-    def clear_text_m(self, locator):
+    def clear_text_mobile(self, locator):
         """Clears the text field identified by `locator`.
 
         See `introduction` for details about locating elements.
@@ -32,7 +32,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Clear text field '%s'" % locator)
         self._element_clear_text_by_locator(locator)
 
-    def click_element_m(self, locator):
+    def click_element_mobile(self, locator):
         """Click element identified by `locator`.
 
         Key attributes for arbitrary elements are `index` and `name`. See
@@ -41,7 +41,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Clicking element '%s'." % locator)
         self._element_find(locator, True, True).click()
 
-    def click_button_m(self, index_or_name):
+    def click_button_mobile(self, index_or_name):
         """ Click button """
         _platform_class_dict = {'ios': 'UIAButton',
                                 'android': 'android.widget.Button'}
@@ -49,7 +49,7 @@ class Mobile_Element(KeywordGroup):
             class_name = self._get_class(_platform_class_dict)
             self._click_element_by_class_name(class_name, index_or_name)
 
-    def click_text_m(self, text, exact_match=False):
+    def click_text_mobile(self, text, exact_match=False):
         """Click text identified by ``text``.
 
         By default tries to click first text involves given ``text``, if you would
@@ -77,7 +77,7 @@ class Mobile_Element(KeywordGroup):
                 _xpath = u'//*[contains(@{},"{}")]'.format('text', text)
             self._element_find(_xpath, True, True).click()
 
-    def input_text_m(self, locator, text):
+    def input_text_mobile(self, locator, text):
         """Types the given `text` into text field identified by `locator`.
 
         See `introduction` for details about locating elements.
@@ -85,7 +85,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Typing text '%s' into text field '%s'" % (text, locator))
         self._element_input_text_by_locator(locator, text)
 
-    def input_password_m(self, locator, text):
+    def input_password_mobile(self, locator, text):
         """Types the given password into text field identified by `locator`.
 
         Difference between this keyword and `Input Text` is that this keyword
@@ -95,7 +95,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Typing password into text field '%s'" % locator)
         self._element_input_text_by_locator(locator, text)
 
-    def input_value_m(self, locator, text):
+    def input_value_mobile(self, locator, text):
         """Sets the given value into text field identified by `locator`. This is an IOS only keyword, input value makes use of set_value
 
         See `introduction` for details about locating elements.
@@ -110,7 +110,7 @@ class Mobile_Element(KeywordGroup):
         driver = self._current_application()
         driver.hide_keyboard(key_name)
 
-    def page_should_contain_text_m(self, text, loglevel='INFO'):
+    def page_should_contain_text_mobile(self, text, loglevel='INFO'):
         """Verifies that current page contains `text`.
 
         If this keyword fails, it automatically logs the page source
@@ -123,7 +123,7 @@ class Mobile_Element(KeywordGroup):
                                  "but did not" % text)
         self._info("Current page contains text '%s'." % text)
 
-    def page_should_not_contain_text_m(self, text, loglevel='INFO'):
+    def page_should_not_contain_text_mobile(self, text, loglevel='INFO'):
         """Verifies that current page not contains `text`.
 
         If this keyword fails, it automatically logs the page source
@@ -135,7 +135,7 @@ class Mobile_Element(KeywordGroup):
             raise AssertionError("Page should not have contained text '%s'" % text)
         self._info("Current page does not contains text '%s'." % text)
 
-    def page_should_contain_element_m(self, locator, loglevel='INFO'):
+    def page_should_contain_element_mobile(self, locator, loglevel='INFO'):
         """Verifies that current page contains `locator` element.
 
         If this keyword fails, it automatically logs the page source
@@ -148,7 +148,7 @@ class Mobile_Element(KeywordGroup):
                                  "but did not" % locator)
         self._info("Current page contains element '%s'." % locator)
 
-    def page_should_not_contain_element_m(self, locator, loglevel='INFO'):
+    def page_should_not_contain_element_mobile(self, locator, loglevel='INFO'):
         """Verifies that current page not contains `locator` element.
 
         If this keyword fails, it automatically logs the page source
@@ -160,7 +160,7 @@ class Mobile_Element(KeywordGroup):
             raise AssertionError("Page should not have contained element '%s'" % locator)
         self._info("Current page not contains element '%s'." % locator)
 
-    def element_should_be_disabled_m(self, locator, loglevel='INFO'):
+    def element_should_be_disabled_mobile(self, locator, loglevel='INFO'):
         """Verifies that element identified with locator is disabled.
 
         Key attributes for arbitrary elements are `id` and `name`. See
@@ -172,7 +172,7 @@ class Mobile_Element(KeywordGroup):
                                  "but did not" % locator)
         self._info("Element '%s' is disabled ." % locator)
 
-    def element_should_be_enabled_m(self, locator, loglevel='INFO'):
+    def element_should_be_enabled_mobile(self, locator, loglevel='INFO'):
         """Verifies that element identified with locator is enabled.
 
         Key attributes for arbitrary elements are `id` and `name`. See
@@ -184,21 +184,21 @@ class Mobile_Element(KeywordGroup):
                                  "but did not" % locator)
         self._info("Element '%s' is enabled ." % locator)
 
-    def element_name_should_be_m(self, locator, expected):
+    def element_name_should_be_mobile(self, locator, expected):
         element = self._element_find(locator, True, True)
         if str(expected) != str(element.get_attribute('name')):
             raise AssertionError("Element '%s' name should be '%s' "
                                  "but it is '%s'." % (locator, expected, element.get_attribute('name')))
         self._info("Element '%s' name is '%s' " % (locator, expected))
 
-    def element_value_should_be_m(self, locator, expected):
+    def element_value_should_be_mobile(self, locator, expected):
         element = self._element_find(locator, True, True)
         if str(expected) != str(element.get_attribute('value')):
             raise AssertionError("Element '%s' value should be '%s' "
                                  "but it is '%s'." % (locator, expected, element.get_attribute('value')))
         self._info("Element '%s' value is '%s' " % (locator, expected))
 
-    def element_attribute_should_match_m(self, locator, attr_name, match_pattern, regexp=False):
+    def element_attribute_should_match_mobile(self, locator, attr_name, match_pattern, regexp=False):
         """Verify that an attribute of an element matches the expected criteria.
 
         The element is identified by _locator_. See `introduction` for details
@@ -278,7 +278,7 @@ class Mobile_Element(KeywordGroup):
         #                         "but it was '%s'." % (locator, attr_name, expected, element.get_attribute(attr_name)))
         self._info("Element '%s' attribute '%s' is '%s' " % (locator, attr_name, match_pattern))
 
-    def element_should_contain_text_m(self, locator, expected, message=''):
+    def element_should_contain_text_mobile(self, locator, expected, message=''):
         """Verifies element identified by ``locator`` contains text ``expected``.
 
         If you wish to assert an exact (not a substring) match on the text
@@ -297,7 +297,7 @@ class Mobile_Element(KeywordGroup):
                           "its text was '%s'." % (locator, expected, actual)
             raise AssertionError(message)
 
-    def element_should_not_contain_text_m(self, locator, expected, message=''):
+    def element_should_not_contain_text_mobile(self, locator, expected, message=''):
         """Verifies element identified by ``locator`` does not contain text ``expected``.
 
         ``message`` can be used to override the default error message.
@@ -312,7 +312,7 @@ class Mobile_Element(KeywordGroup):
                           "it did." % (locator, expected)
             raise AssertionError(message)
 
-    def element_text_should_be_m(self, locator, expected, message=''):
+    def element_text_should_be_mobile(self, locator, expected, message=''):
         """Verifies element identified by ``locator`` exactly contains text ``expected``.
 
         In contrast to `Element Should Contain Text`, this keyword does not try
@@ -332,7 +332,7 @@ class Mobile_Element(KeywordGroup):
                           "in fact it was '%s'." % (locator, expected, actual)
             raise AssertionError(message)
 
-    def get_webelement_m(self, locator):
+    def get_webelement_mobile(self, locator):
         """Returns the first [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] object matching ``locator``.
 
         Example:
@@ -343,7 +343,7 @@ class Mobile_Element(KeywordGroup):
         """
         return self._element_find(locator, True, True)
 
-    def get_webelements_m(self, locator):
+    def get_webelements_mobile(self, locator):
         """Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.
 
         Example:
@@ -358,7 +358,7 @@ class Mobile_Element(KeywordGroup):
         """
         return self._element_find(locator, False, True)
 
-    def get_element_attribute_m(self, locator, attribute):
+    def get_element_attribute_mobile(self, locator, attribute):
         """Get element attribute using given attribute: name, value,...
 
         Examples:
@@ -380,7 +380,7 @@ class Mobile_Element(KeywordGroup):
         except:
             raise AssertionError("Attribute '%s' is not valid for element '%s'" % (attribute, locator))
 
-    def get_element_location_m(self, locator):
+    def get_element_location_mobile(self, locator):
         """Get element location
 
         Key attributes for arbitrary elements are `id` and `name`. See
@@ -391,7 +391,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Element '%s' location: %s " % (locator, element_location))
         return element_location
 
-    def get_element_size_m(self, locator):
+    def get_element_size_mobile(self, locator):
         """Get element size
 
         Key attributes for arbitrary elements are `id` and `name`. See
@@ -402,7 +402,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Element '%s' size: %s " % (locator, element_size))
         return element_size
 
-    def get_text_m(self, locator):
+    def get_text_mobile(self, locator):
         """Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)
 
         Example:
@@ -415,7 +415,7 @@ class Mobile_Element(KeywordGroup):
         self._info("Element '%s' text is '%s' " % (locator, text))
         return text
 
-    def get_matching_xpath_count_m(self, xpath):
+    def get_matching_xpath_count_mobile(self, xpath):
         """Returns number of elements matching ``xpath``
 
         One should not use the `xpath=` prefix for 'xpath'. XPath is assumed.
@@ -433,7 +433,7 @@ class Mobile_Element(KeywordGroup):
         count = len(self._element_find("xpath=" + xpath, False, False))
         return str(count)
 
-    def xpath_should_match_x_times_m(self, xpath, count, error=None, loglevel='INFO'):
+    def xpath_should_match_x_times_mobile(self, xpath, count, error=None, loglevel='INFO'):
         """Verifies that the page contains the given number of elements located by the given ``xpath``.
 
         One should not use the `xpath=` prefix for 'xpath'. XPath is assumed.

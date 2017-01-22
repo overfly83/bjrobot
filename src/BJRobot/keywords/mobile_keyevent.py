@@ -6,7 +6,7 @@ from .keywordgroup import KeywordGroup
 class Keyevent(KeywordGroup):
 
     # Public
-    def press_keycode_m(self, keycode, metastate=None):
+    def press_keycode(self, keycode, metastate=None):
         """Sends a press of keycode to the device.
 
         Android only.
@@ -32,7 +32,7 @@ class Keyevent(KeywordGroup):
         driver = self._current_application()
         driver.press_keycode(keycode, metastate)
 
-    def long_press_keycode_m(self, keycode, metastate=None):
+    def long_press_keycode(self, keycode, metastate=None):
         """Sends a long press of keycode to the device.
 
         Android only.

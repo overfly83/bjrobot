@@ -8,12 +8,14 @@ from mobile_element import Mobile_Element
 from android_utils import AndroidUtils
 from mobile_touch import Mobile_Touch
 from applicationmanager import ApplicationManagemer
+from wait import Waiting
 
 __all__ = ['BrowserManager',
            'Element',
            'ApplicationManagemer',
            'Mobile_Element',
            'AndroidUtils',
+           'Waiting',
            'Mobile_Touch',
            'Screenshot',
            'Keyevent',

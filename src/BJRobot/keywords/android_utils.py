@@ -18,7 +18,7 @@ class AndroidUtils(KeywordGroup):
         driver = self._current_application()
         return driver.network_connection
 
-    def set_network_connection_status_m(self, connectionStatus):
+    def set_network_connection_status(self, connectionStatus):
         """Sets the network connection Status.
 
         Android only.
@@ -34,7 +34,7 @@ class AndroidUtils(KeywordGroup):
         driver = self._current_application()
         return driver.set_network_connection(int(connectionStatus))
 
-    def pull_file_m(self, path, decode=False):
+    def pull_file(self, path, decode=False):
         """Retrieves the file at `path` and return it's content.
 
         Android only.
@@ -48,7 +48,7 @@ class AndroidUtils(KeywordGroup):
             theFile = base64.b64decode(theFile)
         return theFile
 
-    def pull_folder_m(self, path, decode=False):
+    def pull_folder(self, path, decode=False):
         """Retrieves a folder at `path`. Returns the folder's contents zipped.
 
         Android only.
@@ -62,7 +62,7 @@ class AndroidUtils(KeywordGroup):
             theFolder = base64.b64decode(theFolder)
         return theFolder
 
-    def push_file_m(self, path, data, encode=False):
+    def push_file(self, path, data, encode=False):
         """Puts the data in the file specified as `path`.
 
         Android only.
@@ -76,7 +76,7 @@ class AndroidUtils(KeywordGroup):
             data = base64.b64encode(data)
         driver.push_file(path, data)
 
-    def get_activity_m(self):
+    def get_activity(self):
         """Retrieves the current activity on the device.
 
         Android only.
@@ -85,7 +85,7 @@ class AndroidUtils(KeywordGroup):
         driver = self._current_application()
         return driver.current_activity
 
-    def start_activity_m(self, appPackage, appActivity, **opts):
+    def start_activity(self, appPackage, appActivity, **opts):
         """Opens an arbitrary activity during a test. If the activity belongs to
         another application, that application is started and the activity is opened.
 
@@ -126,7 +126,7 @@ class AndroidUtils(KeywordGroup):
         driver = self._current_application()
         driver.start_activity(app_package=appPackage, app_activity=appActivity, **data)
 
-    def wait_activity_m(self, activity, timeout, interval=1):
+    def wait_activity(self, activity, timeout, interval=1):
         """Wait for an activity: block until target activity presents
         or time out.
 

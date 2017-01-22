@@ -249,10 +249,11 @@ class BrowserManager(KeywordGroup):
         """
         self._current_browser().back()
 
-    def go_to(self, url):
+    def go_to_url(self, url):
         """Navigates the active browser instance to the provided URL.
-        Example:
-        | go to | http://www.baidu.com |
+        | Open Application  | http://localhost:4755/wd/hub | platformName=iOS | platformVersion=7.0 |
+        deviceName='iPhone Simulator' | browserName=Safari |
+        | Go To URL         | http://m.webapp.com          |
         """
         self._current_browser().get(url)
 

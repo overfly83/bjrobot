@@ -4,36 +4,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 from keywordgroup import KeywordGroup
 from BJRobot.utilities import System
 import time
+import robot.utils
+from robot.libraries.BuiltIn import BuiltIn
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.keys import Keys
+from BJRobot.locators import ElementFinder
 
 
 class Element(KeywordGroup):
 
     def __init__(self):
         self.__default_implicit_wait_in_secs = self._default_implicit_wait_in_secs
-
-    def wait_until_page_contains_element(self, locator, timeout=30):
-        """
-        Let the script wait until the page contain the expected element.
-        The possible locator could be
-        id, xpath, link text, partial link text, name, tag name, class name, css selector
-        Example:
-        | wait until page contains element | id=kw | 30 |
-        """
-        (prefix, criteria) = self._parse_locator(locator)
-        self._safe_find(by=prefix, value=criteria, timeout=timeout)
-
-    def wait_until_page_not_contains_element(self, locator, timeout=30):
-        """
-        Let the script wait until the page not contain the expected element.
-        The possible locator could be
-        id, xpath, link text, partial link text, name, tag name, class name, css selector
-        Example:
-        | wait until page not contains element | id=kw | 30 |
-        """
-        WebDriverWait(self._get_current_browser(), timeout, poll_frequency=0.1) \
-            .until(ec.invisibility_of_element_located(locator=locator))
+        self._bi = BuiltIn()
 
     def find_element(self, locator, timeout=30):
         """
@@ -43,72 +25,16 @@ class Element(KeywordGroup):
         Example:
         | find element | id=kw | 30 |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         return self._safe_find(by=prefix, value=criteria, timeout=timeout)
-
-    def find_element_by_class(self, class_name, timeout=30):
-        """
-        Find element by class name
-        Example:
-        | find element by class | classname | 30 |
-        """
-        return self._safe_find(by=By.CLASS_NAME, value=class_name, timeout=timeout)
-
-    def find_element_by_name(self, name, timeout=30):
-        """
-        Find element by class name
-        Example:
-        | find element by class | name | 30 |
-        """
-        return self._safe_find(by=By.NAME, value=name, timeout=timeout)
 
     def find_element_by_id(self, id_, timeout=30):
         """
         Find element by class id
         Example:
-        | find element by id | id | 30 |
+        | find element by id | su | 30 |
         """
         return self._safe_find(by=By.ID, value=id_, timeout=timeout)
-
-    def find_element_by_link_text(self, link_text, timeout=30):
-        """
-        Find element by class link text
-        Example:
-        | find element by link text | linktext | 30 |
-        """
-        return self._safe_find(by=By.LINK_TEXT, value=link_text, timeout=timeout)
-
-    def find_element_by_partial_link_text(self, partial_link_text, timeout=30):
-        """
-        Find element by partial link text
-        Example:
-        | find element by partial link text | partiallinktext | 30 |
-        """
-        return self._safe_find(by=By.PARTIAL_LINK_TEXT, value=partial_link_text, timeout=timeout)
-
-    def find_element_by_css_selector(self, css_selector, timeout=30):
-        """
-        Find element by css selector
-        Example:
-        | find element by css selector | cssselector | 30 |
-        """
-        return self._safe_find(by=By.CSS_SELECTOR, value=css_selector, timeout=timeout)
-
-    def find_element_by_xpath(self, xpath, timeout=30):
-        """
-        Find element by xpath
-        Example:
-        | find element by xpath | xpath | 10 |
-        """
-        return self._safe_find(by=By.XPATH, value=xpath, timeout=timeout)
-
-    def find_element_by_tag_name(self, tag_name, timeout=30):
-        """
-        Find element by tag name
-        Example:
-        | find element by tag name | tagname | 30 |
-        """
-        return self._safe_find(by=By.TAG_NAME, value=tag_name, timeout=timeout)
 
     def find_elements(self, locator, timeout=30):
         """
@@ -116,26 +42,10 @@ class Element(KeywordGroup):
         The possible locator could be
         id, xpath, link text, partial link text, name, tag name, class name, css selector
         Example:
-        | find elements | xpath=//div | 30 |
+        | find elements | xpath=//div[@class='ht'] | 30 |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         return self._safe_finds(by=prefix, value=criteria, timeout=timeout)
-
-    def find_elements_by_class(self, class_name, timeout=30):
-        """
-        Find elements by class name
-        Example:
-        | find elements by class | class_name | 20 |
-        """
-        return self._safe_finds(by=By.CLASS_NAME, value=class_name, timeout=timeout)
-
-    def find_elements_by_name(self, name, timeout=30):
-        """
-        Find elements by name
-        Example:
-        | find elements by name | name | 20 |
-        """
-        return self._safe_finds(by=By.NAME, value=name, timeout=timeout)
 
     def find_elements_by_id(self, id_, timeout=30):
         """
@@ -145,46 +55,6 @@ class Element(KeywordGroup):
         """
         return self._safe_finds(by=By.ID, value=id_, timeout=timeout)
 
-    def find_elements_by_link_text(self, link_text, timeout=30):
-        """
-        Find elements by link text
-        Example:
-        | find elements by link text | linktext | 20 |
-        """
-        return self._safe_finds(by=By.LINK_TEXT, value=link_text, timeout=timeout)
-
-    def find_elements_by_partial_link_text(self, partial_link_text, timeout=30):
-        """
-        Find elements by partial link text
-        Example:
-        | find elements by partial link text | partiallinktext | 20 |
-        """
-        return self._safe_finds(by=By.PARTIAL_LINK_TEXT, value=partial_link_text, timeout=timeout)
-
-    def find_elements_by_css_selector(self, css_selector, timeout=30):
-        """
-        Find elements by css selector
-        Example:
-        | find elements by css selector | cssselector | 20 |
-        """
-        return self._safe_finds(by=By.CSS_SELECTOR, value=css_selector, timeout=timeout)
-
-    def find_elements_by_xpath(self, xpath, timeout=30):
-        """
-        Find elements by xpath
-        Example:
-        | find elements by xpath | //div[text='hello'] | 20 |
-        """
-        return self._safe_finds(by=By.XPATH, value=xpath, timeout=timeout)
-
-    def find_elements_by_tag_name(self, tag_name, timeout=30):
-        """
-        Find elements by tag name
-        Example:
-        | find elements by tag name | tagname | 20 |
-        """
-        return self._safe_finds(by=By.TAG_NAME, value=tag_name, timeout=timeout)
-
     def element_should_contain_text(self, locator, expected=None, timeout=30):
         """
         Assert if the element contains expected text
@@ -193,7 +63,7 @@ class Element(KeywordGroup):
         Example:
         | element should contain text | id=kw | expectedtext |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         actual = self._get_text(locator, timeout=timeout)
         if expected not in actual:
             message = "Element '%s' should have contained text '%s' but " \
@@ -208,7 +78,7 @@ class Element(KeywordGroup):
         Example:
         | element should not contain text | id=kw | expectedtext |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         actual = self._get_text(locator, timeout=timeout)
         if expected in actual:
             message = "Element '%s' should not have contained text '%s' but " \
@@ -223,7 +93,7 @@ class Element(KeywordGroup):
         Example:
         | element should contain value | id=kw | expectedvalue |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         actual = self._get_value(locator, timeout=timeout)
         if expected not in actual:
             message = "Element '%s' should have contained text '%s' but " \
@@ -238,7 +108,7 @@ class Element(KeywordGroup):
         Example:
         | element should not contain text | id=kw | expectedvalue |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         actual = self._get_value(locator, timeout=timeout)
         if expected in actual:
             message = "Element '%s' should not have contained text '%s' but " \
@@ -253,7 +123,7 @@ class Element(KeywordGroup):
         Example:
         | element should be enabled | id=kw |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         if not self.is_element_enabled(locator, timeout=timeout):
             message = "Element '%s' is not enabled currently." % (prefix, criteria).__str__()
             raise AssertionError(message)
@@ -266,7 +136,7 @@ class Element(KeywordGroup):
         Example:
         | element should not be enabled | id=kw |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         if self.is_element_enabled(locator, timeout=timeout):
             message = "Element '%s' is enabled currently." % (prefix, criteria).__str__()
             raise AssertionError(message)
@@ -279,7 +149,7 @@ class Element(KeywordGroup):
         Example:
         | click element | id = kw |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         element = self._safe_find(prefix, criteria, timeout)
         self._safe_click(element, timeout=30)
 
@@ -292,24 +162,6 @@ class Element(KeywordGroup):
         element = self._safe_find(by=By.ID, value=id_, timeout=timeout)
         self._safe_click(element, timeout=30)
 
-    def click_element_by_name(self, name, timeout=30):
-        """
-        Click the element by its element name
-        Example:
-        | click element by name | name |
-        """
-        element = self._safe_find(by=By.NAME, value=name, timeout=timeout)
-        self._safe_click(element, timeout=30)
-
-    def click_element_by_xpath(self, xpath, timeout=30):
-        """
-        Click the element by its element xpath
-        Example:
-        | click element by xpath | //div[@class='hello'] |
-        """
-        element = self._safe_find(by=By.XPATH, value=xpath, timeout=timeout)
-        self._safe_click(element, timeout=30)
-
     def double_click_element(self, locator, timeout=30):
         """
         Double Click the element by its element locator
@@ -318,7 +170,7 @@ class Element(KeywordGroup):
         Example:
         | double click element | id=kw |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         element = self._safe_find(by=prefix, value=criteria, timeout=timeout)
         ActionChains(self._get_current_browser()).double_click(element).perform()
 
@@ -331,24 +183,6 @@ class Element(KeywordGroup):
         element = self._safe_find(by=By.ID, value=id_, timeout=timeout)
         ActionChains(self._get_current_browser()).double_click(element).perform()
 
-    def double_click_element_by_name(self, name, timeout=30):
-        """
-        Double Click the element by its element name
-        Example:
-        | double click element by name | kw |
-        """
-        element = self._safe_find(by=By.NAME, value=name, timeout=timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
-
-    def double_click_element_by_xpath(self, xpath, timeout=30):
-        """
-        Double Click the element by its element xpath
-        Example:
-        | double click element by xpath | //div[@id='kw'] |
-        """
-        element = self._safe_find(by=By.XPATH, value=xpath, timeout=timeout)
-        ActionChains(self._get_current_browser()).double_click(element).perform()
-
     def click_element_at_coordinates(self, locator, xoffset=0, yoffset=0, timeout=30):
         """
         Click the element by horizontal offset and vertical offset by its element locator
@@ -357,7 +191,7 @@ class Element(KeywordGroup):
         Example:
         | click element at coordinates | id = kw | 50 | 80 |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         element = self._safe_find(by=prefix, value=criteria, timeout=timeout)
         ActionChains(self._get_current_browser()).move_to_element(element).\
             move_by_offset(xoffset, yoffset).click().perform()
@@ -369,26 +203,6 @@ class Element(KeywordGroup):
         | click element at coordinates by id | kw | 50 | 80 |
         """
         element = self._safe_find(by=By.ID, value=id_, timeout=timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element). \
-            move_by_offset(xoffset, yoffset).click().perform()
-
-    def click_element_at_coordinates_by_name(self, name, xoffset=0, yoffset=0, timeout=30):
-        """
-        Click the element by horizontal offset and vertical offset by its element name
-        Example:
-        | click element at coordinates by name | kwname | 50 | 80 |
-        """
-        element = self._safe_find(by=By.NAME, value=name, timeout=timeout)
-        ActionChains(self._get_current_browser()).move_to_element(element). \
-            move_by_offset(xoffset, yoffset).click().perform()
-
-    def click_element_at_coordinates_by_xpath(self, xpath, xoffset=0, yoffset=0, timeout=30):
-        """
-        Click the element by horizontal offset and vertical offset by its element xpath
-        Example:
-        | click element at coordinates by xpath | //div[@class='hello'] | 50 | 80 |
-        """
-        element = self._safe_find(by=By.XPATH, value=xpath, timeout=timeout)
         ActionChains(self._get_current_browser()).move_to_element(element). \
             move_by_offset(xoffset, yoffset).click().perform()
 
@@ -413,7 +227,7 @@ class Element(KeywordGroup):
         Example:
         | drag and drop by offset | id = kw | 30 | 60 | 10s |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         element = self._safe_find(by=prefix, value=criteria, timeout=timeout)
         ActionChains(self._get_current_browser()).drag_and_drop_by_offset(element, xoffset, yoffset).perform()
 
@@ -424,35 +238,11 @@ class Element(KeywordGroup):
         Example:
         | mouse down | id | kw |
         """
-        (prefix, criteria) = self._parse_locator(locator)
+        (prefix, criteria) = System.parse_locator(locator)
         element = self._safe_find(by=prefix, value=criteria, timeout=timeout)
         if element is None:
             raise AssertionError("ERROR: Element %s not found." % (prefix, criteria).__str__())
         ActionChains(self._get_current_browser()).click_and_hold(element).perform()
-
-    def mouse_down_by_id(self, id_, timeout=30):
-        """press mouse down on element by id
-        Example:
-        | mouse down by id | kw |
-        """
-        locator = 'id=' + id_
-        self.mouse_down(locator, timeout=timeout)
-
-    def mouse_down_by_name(self, name, timeout=30):
-        """press mouse down on element by name
-        Example:
-        | mouse down by name | kw |
-        """
-        locator = 'name=' + name
-        self.mouse_down(locator, timeout=timeout)
-
-    def mouse_down_by_xpath(self, xpath, timeout=30):
-        """press mouse down on element by xpath
-        Example:
-        | mouse down by xpath | //div[@class='hello'] |
-        """
-        locator = 'xpath=' + xpath
-        self.mouse_down(locator, timeout=timeout)
 
     def set_value(self, locator, key=None, timeout=30, enter=False):
         """set value on a certain element by its locator
@@ -472,25 +262,9 @@ class Element(KeywordGroup):
     def set_value_by_id(self, id_, key=None, timeout=30, enter=False):
         """set value on a certain element by id
         Example:
-        | set value by id | kw |
+        | set value by id | test | value |
         """
         locator = "id=" + id_
-        self.set_value(locator, key=key, timeout=timeout, enter=enter)
-
-    def set_value_by_name(self, name, key=None, timeout=30, enter=False):
-        """set value on a certain element by name
-        Example:
-        | set value by name | kw |
-        """
-        locator = "name=" + name
-        self.set_value(locator, key=key, timeout=timeout, enter=enter)
-
-    def set_value_by_xpath(self, xpath, key=None, timeout=30, enter=False):
-        """set value on a certain element by xpath
-        Example:
-        | set value by xpath | //div[@class='hello'] |
-        """
-        locator = "xpath=" + xpath
         self.set_value(locator, key=key, timeout=timeout, enter=enter)
 
     def is_element_enabled(self, locator, timeout=30):
@@ -508,30 +282,6 @@ class Element(KeywordGroup):
             return False
         return True
 
-    def is_element_enabled_by_id(self, id_, timeout=30):
-        """return if the element is enabled by id
-        Example:
-        | ${enabled}=|is element enabled by id | kw |
-        """
-        locator = "id=" + id_
-        return self.is_element_enabled(locator, timeout=timeout)
-
-    def is_element_enabled_by_name(self, name, timeout=30):
-        """return if the element is enabled by name
-        Example:
-        | ${enabled}=|is element enabled by name | kw |
-        """
-        locator = "name=" + name
-        return self.is_element_enabled(locator, timeout=timeout)
-
-    def is_element_enabled_by_xpath(self, xpath, timeout=30):
-        """return if the element is enabled by xpath
-        Example:
-        | ${enabled}=|is element enabled by xpath | //div[text='hello'] |
-        """
-        locator = "xpath=" + xpath
-        return self.is_element_enabled(locator, timeout=timeout)
-
     def is_element_visible(self, locator, timeout=30):
         """return if the element is visible by locator
         If you don't understand what present differ from visible, please use visible instead.
@@ -545,33 +295,6 @@ class Element(KeywordGroup):
             return element.is_displayed()
         return False
 
-    def is_element_visible_by_id(self, id_, timeout=30):
-        """return if the element is visible by id
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element visible by id | kw |
-        """
-        locator = "id=" + id_
-        return self.is_element_visible(locator, timeout=timeout)
-
-    def is_element_visible_by_name(self, name, timeout=30):
-        """return if the element is visible by name
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element visible by name | kw |
-        """
-        locator = "name=" + name
-        return self.is_element_visible(locator, timeout=timeout)
-
-    def is_element_visible_by_xpath(self, xpath, timeout=30):
-        """return if the element is visible by xpath
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element visible by xpath | //div[@class='hello'] |
-        """
-        locator = "xpath=" + xpath
-        return self.is_element_visible(locator, timeout=timeout)
-
     def is_element_present(self, locator, timeout=30):
         """return if the element is present by locator
         If you don't understand what present differ from visible, please use visible instead.
@@ -582,60 +305,32 @@ class Element(KeywordGroup):
         """
         return self.find_element(locator, timeout) is not None
 
-    def is_element_present_by_id(self, id_, timeout=30):
-        """return if the element is present by id
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by id | kw |
+    def xpath_should_match_x_times(self, xpath, expected_xpath_count, timeout):
+        """Verifies that the page contains the given number of elements located by the given `xpath`.
+
+        One should not use the xpath= prefix for 'xpath'. XPath is assumed.
+
+        Correct:
+        | Xpath Should Match X Times | //div[@id='sales-pop'] | 1
+        Incorrect:
+        | Xpath Should Match X Times | xpath=//div[@id='sales-pop'] | 1
+
+        See `Page Should Contain Element` for explanation about `message` and
+        `loglevel` arguments.
         """
-        locator = "id=" + id_
-        return self.is_element_present(locator, timeout=timeout)
+        actual_xpath_count = len(self.find_elements("xpath=" + xpath, timeout=timeout))
+        if int(actual_xpath_count) != int(expected_xpath_count):
+            message = "Xpath %s should have matched %s times but matched %s times"\
+                        %(xpath, expected_xpath_count, actual_xpath_count)
+            self.log_source('INFO')
+            raise AssertionError(message)
+        self._info("Current page contains %s elements matching '%s'."
+                   % (actual_xpath_count, xpath))
 
-    def is_element_present_by_name(self, name, timeout=30):
-        """return if the element is present by name
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by name | kw |
-        """
-        locator = "name=" + name
-        return self.is_element_present(locator, timeout=timeout)
-
-    def is_element_present_by_xpath(self, xpath, timeout=30):
-        """return if the element is present by xpath
-        If you don't understand what present differ from visible, please use visible instead.
-        Example:
-        | ${enabled}=|is element present by xpath | //div[@class='hello'] |
-        """
-        locator = "xpath=" + xpath
-        return self.is_element_present(locator, timeout=timeout)
-
-    def _get_text_by_id(self, id_, timeout=30):
-        locator = "id=" + id_
-        return self._get_text(locator, timeout=timeout)
-
-    def _get_text_by_name(self, name, timeout=30):
-        locator = "name=" + name
-        return self._get_text(locator, timeout=timeout)
-
-    def _get_text_by_xpath(self, xpath, timeout=30):
-        locator = "xpath=" + xpath
-        return self._get_text(locator, timeout=timeout)
 
     def _get_text(self, locator, timeout=30):
         element = self.find_element(locator, timeout)
         return element.text if element is not None else None
-
-    def _get_value_by_id(self, id_, timeout=30):
-        locator = "id=" + id_
-        return self._get_value(locator, timeout=timeout)
-
-    def _get_value_by_name(self, name, timeout=30):
-        locator = "name=" + name
-        return self._get_value(locator, timeout=timeout)
-
-    def _get_value_by_xpath(self, xpath, timeout=30):
-        locator = "path=" + xpath
-        return self._get_value(locator, timeout=timeout)
 
     def _get_value(self, locator, timeout=30):
         element = self.find_element(locator, timeout)
@@ -643,16 +338,6 @@ class Element(KeywordGroup):
 
     def _get_current_browser(self):
         return self._current_browser()
-
-    def _parse_locator(self, locator):
-        prefix = None
-        criteria = locator
-        if not locator.startswith('//'):
-            locator_parts = locator.partition('=')
-            if len(locator_parts[1]) > 0:
-                prefix = locator_parts[0]
-                criteria = locator_parts[2].strip()
-        return prefix, criteria
 
     def _safe_click(self, element, timeout=30):
         start = int(round(time.time() * 1000))
@@ -669,6 +354,7 @@ class Element(KeywordGroup):
 
     def _safe_find(self, by, value, timeout=30):
         start = int(round(time.time() * 1000))
+        timeout = robot.utils.timestr_to_secs(timeout) if timeout is not None else self.__default_implicit_wait_in_secs
         while timeout * 1000 > int(round(time.time() * 1000)) - start:
             try:
                 _driver = self._get_current_browser()
@@ -691,6 +377,7 @@ class Element(KeywordGroup):
 
     def _safe_finds(self, by, value, timeout=30):
         start = int(round(time.time() * 1000))
+        timeout = robot.utils.timestr_to_secs(timeout) if timeout is not None else self.__default_implicit_wait_in_secs
         _driver = self._get_current_browser()
         while timeout * 1000 > int(round(time.time() * 1000)) - start:
             try:

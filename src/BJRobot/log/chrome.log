@@ -1,4 +1,4 @@
-[1.990][INFO]: COMMAND InitSession {
+[1.992][INFO]: COMMAND InitSession {
    "desiredCapabilities": {
       "browserName": "chrome",
       "chromeOptions": {
@@ -22,7 +22,7 @@
 
    }
 }
-[1.992][INFO]: Populating Preferences file: {
+[1.996][INFO]: Populating Preferences file: {
    "alternate_error_pages": {
       "enabled": false
    },
@@ -76,7 +76,7 @@
       "enabled": false
    }
 }
-[1.993][INFO]: Populating Local State file: {
+[1.998][INFO]: Populating Local State file: {
    "background_mode": {
       "enabled": false
    },
@@ -86,16 +86,16 @@
       }
    }
 }
-[2.004][INFO]: Launching chrome: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-extensions --disable-hang-monitor --disable-infobars --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-logging --ignore-certificate-errors --load-component-extension="C:\Users\eason\AppData\Local\Temp\scoped_dir28644_19662\internal" --log-level=0 --metrics-recording-only --no-first-run --no-proxy-server --password-store=basic --remote-debugging-port=12088 --safebrowsing-disable-auto-update --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\eason\AppData\Local\Temp\scoped_dir28644_8543" data:,
-[2.349][INFO]: resolved localhost to ["::1","127.0.0.1"]
-[3.366][INFO]: RESPONSE InitSession {
+[2.018][INFO]: Launching chrome: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-extensions --disable-hang-monitor --disable-infobars --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-logging --ignore-certificate-errors --load-component-extension="C:\Users\eason\AppData\Local\Temp\scoped_dir32876_13891\internal" --log-level=0 --metrics-recording-only --no-first-run --no-proxy-server --password-store=basic --remote-debugging-port=12273 --safebrowsing-disable-auto-update --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\eason\AppData\Local\Temp\scoped_dir32876_15473" data:,
+[2.379][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[3.394][INFO]: RESPONSE InitSession {
    "acceptSslCerts": true,
    "applicationCacheEnabled": false,
    "browserConnectionEnabled": false,
    "browserName": "chrome",
    "chrome": {
       "chromedriverVersion": "2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9)",
-      "userDataDir": "C:\\Users\\eason\\AppData\\Local\\Temp\\scoped_dir28644_8543"
+      "userDataDir": "C:\\Users\\eason\\AppData\\Local\\Temp\\scoped_dir32876_15473"
    },
    "cssSelectorsEnabled": true,
    "databaseEnabled": false,
@@ -113,763 +113,662 @@
    "takesScreenshot": true,
    "~~~": "..."
 }
-[3.369][INFO]: COMMAND SetScriptTimeout {
+[3.396][INFO]: COMMAND SetScriptTimeout {
    "ms": 10000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[3.369][INFO]: RESPONSE SetScriptTimeout
-[3.372][INFO]: COMMAND SetImplicitWait {
+[3.396][INFO]: RESPONSE SetScriptTimeout
+[3.397][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[3.372][INFO]: RESPONSE SetImplicitWait
-[3.374][INFO]: COMMAND Navigate {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[3.398][INFO]: RESPONSE SetImplicitWait
+[3.399][INFO]: COMMAND Navigate {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "url": "http://www.bing.com"
 }
-[3.374][INFO]: Waiting for pending navigations...
-[3.389][INFO]: Done waiting for pending navigations. Status: ok
-[3.776][INFO]: Waiting for pending navigations...
-[3.896][INFO]: Done waiting for pending navigations. Status: ok
-[3.896][INFO]: RESPONSE Navigate
-[3.898][INFO]: COMMAND ExecuteScript {
+[3.399][INFO]: Waiting for pending navigations...
+[3.406][INFO]: Done waiting for pending navigations. Status: ok
+[3.802][INFO]: Waiting for pending navigations...
+[3.906][INFO]: Done waiting for pending navigations. Status: ok
+[3.906][INFO]: RESPONSE Navigate
+[3.908][INFO]: COMMAND ExecuteScript {
    "args": [  ],
    "script": "window.open('http://www.baidu.com')",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[3.898][INFO]: Waiting for pending navigations...
-[3.899][INFO]: Done waiting for pending navigations. Status: ok
-[3.924][INFO]: Waiting for pending navigations...
-[3.927][INFO]: Done waiting for pending navigations. Status: ok
-[3.927][INFO]: RESPONSE ExecuteScript null
-[3.930][INFO]: COMMAND GetWindows {
+[3.908][INFO]: Waiting for pending navigations...
+[3.915][INFO]: Done waiting for pending navigations. Status: ok
+[3.949][INFO]: Waiting for pending navigations...
+[3.951][INFO]: Done waiting for pending navigations. Status: ok
+[3.952][INFO]: RESPONSE ExecuteScript null
+[3.953][INFO]: COMMAND GetWindows {
 
 }
-[3.953][INFO]: RESPONSE GetWindows [ "CDwindow-5603f81d-b397-4309-8859-f96e276ffeb0", "CDwindow-594cd324-b435-49fb-a12b-06d712a618a5" ]
-[3.955][INFO]: COMMAND SwitchToWindow {
-   "name": "CDwindow-5603f81d-b397-4309-8859-f96e276ffeb0",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[3.975][INFO]: RESPONSE GetWindows [ "CDwindow-8fe9bda6-92c8-430b-bada-cccd29063f3c", "CDwindow-521564bb-086c-414d-98d8-b23eee9d3590" ]
+[3.977][INFO]: COMMAND SwitchToWindow {
+   "name": "CDwindow-8fe9bda6-92c8-430b-bada-cccd29063f3c",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[3.956][INFO]: RESPONSE SwitchToWindow
-[3.957][INFO]: COMMAND GetUrl {
+[3.978][INFO]: RESPONSE SwitchToWindow
+[3.979][INFO]: COMMAND GetUrl {
 
 }
-[3.957][INFO]: Waiting for pending navigations...
-[3.963][INFO]: Done waiting for pending navigations. Status: ok
-[3.965][INFO]: Waiting for pending navigations...
-[3.965][INFO]: Done waiting for pending navigations. Status: ok
-[3.965][INFO]: RESPONSE GetUrl "http://cn.bing.com/"
-[3.967][INFO]: COMMAND GetTitle {
+[3.979][INFO]: Waiting for pending navigations...
+[3.980][INFO]: Done waiting for pending navigations. Status: ok
+[3.988][INFO]: Waiting for pending navigations...
+[3.988][INFO]: Done waiting for pending navigations. Status: ok
+[3.988][INFO]: RESPONSE GetUrl "http://cn.bing.com/"
+[3.990][INFO]: COMMAND GetTitle {
 
 }
-[3.967][INFO]: Waiting for pending navigations...
-[3.967][INFO]: Done waiting for pending navigations. Status: ok
-[3.969][INFO]: Waiting for pending navigations...
-[3.969][INFO]: Done waiting for pending navigations. Status: ok
-[3.970][INFO]: RESPONSE GetTitle "微软必应搜索 - 全球搜索，有问必应 (Bing)"
-[3.971][INFO]: COMMAND SwitchToWindow {
-   "name": "CDwindow-594cd324-b435-49fb-a12b-06d712a618a5",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[3.990][INFO]: Waiting for pending navigations...
+[3.990][INFO]: Done waiting for pending navigations. Status: ok
+[3.993][INFO]: Waiting for pending navigations...
+[3.993][INFO]: Done waiting for pending navigations. Status: ok
+[3.993][INFO]: RESPONSE GetTitle "微软必应搜索 - 全球搜索，有问必应 (Bing)"
+[3.995][INFO]: COMMAND SwitchToWindow {
+   "name": "CDwindow-521564bb-086c-414d-98d8-b23eee9d3590",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[3.972][INFO]: RESPONSE SwitchToWindow
-[3.974][INFO]: COMMAND GetUrl {
+[3.995][INFO]: RESPONSE SwitchToWindow
+[3.996][INFO]: COMMAND GetUrl {
 
 }
-[3.974][INFO]: resolved localhost to ["::1","127.0.0.1"]
-[4.981][INFO]: Waiting for pending navigations...
-[4.996][INFO]: Done waiting for pending navigations. Status: ok
-[5.007][INFO]: Waiting for pending navigations...
-[5.013][INFO]: Done waiting for pending navigations. Status: ok
-[5.013][INFO]: RESPONSE GetUrl "https://www.baidu.com/"
-[5.015][INFO]: COMMAND GetTitle {
+[3.997][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[5.001][INFO]: Waiting for pending navigations...
+[5.006][INFO]: Done waiting for pending navigations. Status: ok
+[5.008][INFO]: Waiting for pending navigations...
+[5.010][INFO]: Done waiting for pending navigations. Status: ok
+[5.010][INFO]: RESPONSE GetUrl "https://www.baidu.com/"
+[5.012][INFO]: COMMAND GetTitle {
 
 }
-[5.015][INFO]: Waiting for pending navigations...
-[5.016][INFO]: Done waiting for pending navigations. Status: ok
-[5.017][INFO]: Waiting for pending navigations...
-[5.018][INFO]: Done waiting for pending navigations. Status: ok
-[5.018][INFO]: RESPONSE GetTitle "百度一下，你就知道"
-[5.019][INFO]: COMMAND SetImplicitWait {
+[5.012][INFO]: Waiting for pending navigations...
+[5.012][INFO]: Done waiting for pending navigations. Status: ok
+[5.014][INFO]: Waiting for pending navigations...
+[5.015][INFO]: Done waiting for pending navigations. Status: ok
+[5.015][INFO]: RESPONSE GetTitle "百度一下，你就知道"
+[5.017][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.019][INFO]: RESPONSE SetImplicitWait
-[5.021][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.017][INFO]: RESPONSE SetImplicitWait
+[5.018][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "kw"
 }
-[5.021][INFO]: Waiting for pending navigations...
-[5.021][INFO]: Done waiting for pending navigations. Status: ok
-[5.037][INFO]: Waiting for pending navigations...
-[5.038][INFO]: Done waiting for pending navigations. Status: ok
-[5.038][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-1"
+[5.018][INFO]: Waiting for pending navigations...
+[5.019][INFO]: Done waiting for pending navigations. Status: ok
+[5.035][INFO]: Waiting for pending navigations...
+[5.036][INFO]: Done waiting for pending navigations. Status: ok
+[5.036][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.3197662572534645-1"
 } ]
-[5.040][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-1"
+[5.037][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.3197662572534645-1"
 }
-[5.040][INFO]: Waiting for pending navigations...
-[5.040][INFO]: Done waiting for pending navigations. Status: ok
-[5.055][INFO]: Waiting for pending navigations...
-[5.056][INFO]: Done waiting for pending navigations. Status: ok
-[5.056][INFO]: RESPONSE IsElementDisplayed true
+[5.038][INFO]: Waiting for pending navigations...
+[5.038][INFO]: Done waiting for pending navigations. Status: ok
+[5.053][INFO]: Waiting for pending navigations...
+[5.054][INFO]: Done waiting for pending navigations. Status: ok
+[5.054][INFO]: RESPONSE IsElementDisplayed true
+[5.056][INFO]: COMMAND SetImplicitWait {
+   "ms": 20000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[5.056][INFO]: RESPONSE SetImplicitWait
 [5.057][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
 [5.057][INFO]: RESPONSE SetImplicitWait
-[5.058][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.058][INFO]: COMMAND ClearElement {
+   "id": "0.3197662572534645-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.058][INFO]: RESPONSE SetImplicitWait
-[5.059][INFO]: COMMAND ClearElement {
-   "id": "0.45088743800746656-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.060][INFO]: Waiting for pending navigations...
-[5.060][INFO]: Done waiting for pending navigations. Status: ok
-[5.078][INFO]: Waiting for pending navigations...
-[5.078][INFO]: Done waiting for pending navigations. Status: ok
-[5.078][INFO]: RESPONSE ClearElement
+[5.058][INFO]: Waiting for pending navigations...
+[5.059][INFO]: Done waiting for pending navigations. Status: ok
+[5.077][INFO]: Waiting for pending navigations...
+[5.079][INFO]: Done waiting for pending navigations. Status: ok
+[5.079][INFO]: RESPONSE ClearElement
 [5.080][INFO]: COMMAND TypeElement {
-   "id": "0.45088743800746656-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+   "id": "0.3197662572534645-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "value": [ "t", "e", "s", "t" ]
 }
 [5.080][INFO]: Waiting for pending navigations...
-[5.081][INFO]: Done waiting for pending navigations. Status: ok
-[5.119][INFO]: Waiting for pending navigations...
+[5.082][INFO]: Done waiting for pending navigations. Status: ok
+[5.117][INFO]: Waiting for pending navigations...
 [5.160][INFO]: Done waiting for pending navigations. Status: ok
 [5.160][INFO]: RESPONSE TypeElement
-[5.162][INFO]: COMMAND SetImplicitWait {
+[5.163][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.162][INFO]: RESPONSE SetImplicitWait
-[5.164][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.163][INFO]: RESPONSE SetImplicitWait
+[5.165][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "kw"
 }
-[5.164][INFO]: Waiting for pending navigations...
+[5.165][INFO]: Waiting for pending navigations...
 [5.166][INFO]: Done waiting for pending navigations. Status: ok
-[5.176][INFO]: Waiting for pending navigations...
-[5.178][INFO]: Done waiting for pending navigations. Status: ok
-[5.178][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-1"
+[5.172][INFO]: Waiting for pending navigations...
+[5.173][INFO]: Done waiting for pending navigations. Status: ok
+[5.173][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.3197662572534645-1"
 } ]
-[5.181][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-1"
+[5.175][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.3197662572534645-1"
 }
-[5.181][INFO]: Waiting for pending navigations...
-[5.184][INFO]: Done waiting for pending navigations. Status: ok
-[5.198][INFO]: Waiting for pending navigations...
-[5.201][INFO]: Done waiting for pending navigations. Status: ok
-[5.201][INFO]: RESPONSE IsElementDisplayed true
-[5.203][INFO]: COMMAND SetImplicitWait {
+[5.175][INFO]: Waiting for pending navigations...
+[5.181][INFO]: Done waiting for pending navigations. Status: ok
+[5.203][INFO]: Waiting for pending navigations...
+[5.208][INFO]: Done waiting for pending navigations. Status: ok
+[5.208][INFO]: RESPONSE IsElementDisplayed true
+[5.210][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.203][INFO]: RESPONSE SetImplicitWait
-[5.204][INFO]: COMMAND SetImplicitWait {
+[5.210][INFO]: RESPONSE SetImplicitWait
+[5.212][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.205][INFO]: RESPONSE SetImplicitWait
-[5.206][INFO]: COMMAND ClearElement {
-   "id": "0.45088743800746656-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.212][INFO]: RESPONSE SetImplicitWait
+[5.213][INFO]: COMMAND ClearElement {
+   "id": "0.3197662572534645-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.206][INFO]: Waiting for pending navigations...
-[5.206][INFO]: Done waiting for pending navigations. Status: ok
-[5.211][INFO]: Waiting for pending navigations...
-[5.213][INFO]: Done waiting for pending navigations. Status: ok
-[5.213][INFO]: RESPONSE ClearElement
-[5.215][INFO]: COMMAND TypeElement {
-   "id": "0.45088743800746656-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.214][INFO]: Waiting for pending navigations...
+[5.214][INFO]: Done waiting for pending navigations. Status: ok
+[5.219][INFO]: Waiting for pending navigations...
+[5.220][INFO]: Done waiting for pending navigations. Status: ok
+[5.220][INFO]: RESPONSE ClearElement
+[5.222][INFO]: COMMAND TypeElement {
+   "id": "0.3197662572534645-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "value": [ "t", "e", "s", "t" ]
 }
-[5.215][INFO]: Waiting for pending navigations...
-[5.215][INFO]: Done waiting for pending navigations. Status: ok
-[5.230][INFO]: Waiting for pending navigations...
-[5.243][INFO]: Done waiting for pending navigations. Status: ok
-[5.243][INFO]: RESPONSE TypeElement
-[5.245][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.245][INFO]: RESPONSE SetImplicitWait
-[5.246][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
-   "using": "id",
-   "value": "su"
-}
+[5.222][INFO]: Waiting for pending navigations...
+[5.223][INFO]: Done waiting for pending navigations. Status: ok
 [5.246][INFO]: Waiting for pending navigations...
-[5.247][INFO]: Done waiting for pending navigations. Status: ok
-[5.269][INFO]: Waiting for pending navigations...
-[5.271][INFO]: Done waiting for pending navigations. Status: ok
-[5.271][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-2"
-} ]
-[5.273][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-2"
-}
-[5.273][INFO]: Waiting for pending navigations...
-[5.284][INFO]: Done waiting for pending navigations. Status: ok
-[5.298][INFO]: Waiting for pending navigations...
-[5.298][INFO]: Done waiting for pending navigations. Status: ok
-[5.298][INFO]: RESPONSE IsElementDisplayed true
-[5.300][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.300][INFO]: RESPONSE SetImplicitWait
-[5.301][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.301][INFO]: RESPONSE SetImplicitWait
-[5.302][INFO]: COMMAND IsElementEnabled {
-   "id": "0.45088743800746656-2"
-}
-[5.302][INFO]: Waiting for pending navigations...
-[5.302][INFO]: Done waiting for pending navigations. Status: ok
-[5.311][INFO]: Waiting for pending navigations...
-[5.312][INFO]: Done waiting for pending navigations. Status: ok
-[5.312][INFO]: RESPONSE IsElementEnabled true
-[5.313][INFO]: COMMAND ClickElement {
-   "id": "0.45088743800746656-2",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.313][INFO]: Waiting for pending navigations...
-[5.313][INFO]: Done waiting for pending navigations. Status: ok
-[5.356][INFO]: Waiting for pending navigations...
-[5.368][INFO]: Done waiting for pending navigations. Status: ok
-[5.368][INFO]: RESPONSE ClickElement
-[5.370][INFO]: COMMAND SetImplicitWait {
+[5.267][INFO]: Done waiting for pending navigations. Status: ok
+[5.267][INFO]: RESPONSE TypeElement
+[5.270][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.370][INFO]: RESPONSE SetImplicitWait
-[5.371][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.270][INFO]: RESPONSE SetImplicitWait
+[5.272][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "su"
 }
+[5.272][INFO]: Waiting for pending navigations...
+[5.273][INFO]: Done waiting for pending navigations. Status: ok
+[5.293][INFO]: Waiting for pending navigations...
+[5.295][INFO]: Done waiting for pending navigations. Status: ok
+[5.295][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.3197662572534645-2"
+} ]
+[5.296][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.3197662572534645-2"
+}
+[5.296][INFO]: Waiting for pending navigations...
+[5.297][INFO]: Done waiting for pending navigations. Status: ok
+[5.312][INFO]: Waiting for pending navigations...
+[5.312][INFO]: Done waiting for pending navigations. Status: ok
+[5.312][INFO]: RESPONSE IsElementDisplayed true
+[5.314][INFO]: COMMAND SetImplicitWait {
+   "ms": 20000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[5.314][INFO]: RESPONSE SetImplicitWait
+[5.315][INFO]: COMMAND SetImplicitWait {
+   "ms": 20000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[5.315][INFO]: RESPONSE SetImplicitWait
+[5.316][INFO]: COMMAND IsElementEnabled {
+   "id": "0.3197662572534645-2"
+}
+[5.316][INFO]: Waiting for pending navigations...
+[5.317][INFO]: Done waiting for pending navigations. Status: ok
+[5.326][INFO]: Waiting for pending navigations...
+[5.327][INFO]: Done waiting for pending navigations. Status: ok
+[5.327][INFO]: RESPONSE IsElementEnabled true
+[5.328][INFO]: COMMAND ClickElement {
+   "id": "0.3197662572534645-2",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[5.328][INFO]: Waiting for pending navigations...
+[5.329][INFO]: Done waiting for pending navigations. Status: ok
 [5.371][INFO]: Waiting for pending navigations...
-[5.374][INFO]: Done waiting for pending navigations. Status: ok
-[5.380][INFO]: Waiting for pending navigations...
-[5.381][INFO]: Done waiting for pending navigations. Status: ok
-[5.381][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-2"
-} ]
-[5.383][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-2"
+[5.382][INFO]: Done waiting for pending navigations. Status: ok
+[5.382][INFO]: RESPONSE ClickElement
+[5.384][INFO]: COMMAND SetImplicitWait {
+   "ms": 1000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.383][INFO]: Waiting for pending navigations...
-[5.384][INFO]: Done waiting for pending navigations. Status: ok
-[5.389][INFO]: Waiting for pending navigations...
+[5.384][INFO]: RESPONSE SetImplicitWait
+[5.385][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
+   "using": "id",
+   "value": "su"
+}
+[5.385][INFO]: Waiting for pending navigations...
 [5.390][INFO]: Done waiting for pending navigations. Status: ok
-[5.390][INFO]: RESPONSE IsElementDisplayed true
-[5.392][INFO]: COMMAND SetImplicitWait {
+[5.394][INFO]: Waiting for pending navigations...
+[5.395][INFO]: Done waiting for pending navigations. Status: ok
+[5.395][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.3197662572534645-2"
+} ]
+[5.397][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.3197662572534645-2"
+}
+[5.397][INFO]: Waiting for pending navigations...
+[5.398][INFO]: Done waiting for pending navigations. Status: ok
+[5.404][INFO]: Waiting for pending navigations...
+[5.404][INFO]: Done waiting for pending navigations. Status: ok
+[5.404][INFO]: RESPONSE IsElementDisplayed true
+[5.406][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.392][INFO]: RESPONSE SetImplicitWait
-[5.393][INFO]: COMMAND SetImplicitWait {
+[5.406][INFO]: RESPONSE SetImplicitWait
+[5.407][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.393][INFO]: RESPONSE SetImplicitWait
-[5.395][INFO]: COMMAND IsElementEnabled {
-   "id": "0.45088743800746656-2"
+[5.407][INFO]: RESPONSE SetImplicitWait
+[5.409][INFO]: COMMAND IsElementEnabled {
+   "id": "0.3197662572534645-2"
 }
-[5.395][INFO]: Waiting for pending navigations...
-[5.396][INFO]: Done waiting for pending navigations. Status: ok
-[5.400][INFO]: Waiting for pending navigations...
-[5.401][INFO]: Done waiting for pending navigations. Status: ok
-[5.401][INFO]: RESPONSE IsElementEnabled true
-[5.402][INFO]: COMMAND ClickElement {
-   "id": "0.45088743800746656-2",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.409][INFO]: Waiting for pending navigations...
+[5.409][INFO]: Done waiting for pending navigations. Status: ok
+[5.413][INFO]: Waiting for pending navigations...
+[5.414][INFO]: Done waiting for pending navigations. Status: ok
+[5.414][INFO]: RESPONSE IsElementEnabled true
+[5.415][INFO]: COMMAND ClickElement {
+   "id": "0.3197662572534645-2",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.402][INFO]: Waiting for pending navigations...
-[5.403][INFO]: Done waiting for pending navigations. Status: ok
-[5.430][INFO]: Waiting for pending navigations...
-[5.434][INFO]: Done waiting for pending navigations. Status: ok
-[5.434][INFO]: RESPONSE ClickElement
-[5.435][INFO]: COMMAND SetImplicitWait {
+[5.415][INFO]: Waiting for pending navigations...
+[5.416][INFO]: Done waiting for pending navigations. Status: ok
+[5.436][INFO]: Waiting for pending navigations...
+[5.440][INFO]: Done waiting for pending navigations. Status: ok
+[5.440][INFO]: RESPONSE ClickElement
+[5.442][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.436][INFO]: RESPONSE SetImplicitWait
-[5.437][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.442][INFO]: RESPONSE SetImplicitWait
+[5.443][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "partial link text",
    "value": "JavaScript"
 }
-[5.437][INFO]: Waiting for pending navigations...
-[5.585][INFO]: Done waiting for pending navigations. Status: ok
-[5.733][INFO]: Waiting for pending navigations...
-[5.739][INFO]: Done waiting for pending navigations. Status: ok
-[5.739][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-3"
+[5.444][INFO]: Waiting for pending navigations...
+[5.586][INFO]: Done waiting for pending navigations. Status: ok
+[5.724][INFO]: Waiting for pending navigations...
+[5.729][INFO]: Done waiting for pending navigations. Status: ok
+[5.729][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.3197662572534645-3"
 } ]
-[5.740][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-3"
+[5.731][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.3197662572534645-3"
 }
-[5.740][INFO]: Waiting for pending navigations...
-[5.744][INFO]: Done waiting for pending navigations. Status: ok
-[5.770][INFO]: Waiting for pending navigations...
-[5.771][INFO]: Done waiting for pending navigations. Status: ok
-[5.771][INFO]: RESPONSE IsElementDisplayed true
-[5.772][INFO]: COMMAND SetImplicitWait {
+[5.731][INFO]: Waiting for pending navigations...
+[5.735][INFO]: Done waiting for pending navigations. Status: ok
+[5.753][INFO]: Waiting for pending navigations...
+[5.757][INFO]: Done waiting for pending navigations. Status: ok
+[5.757][INFO]: RESPONSE IsElementDisplayed true
+[5.759][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.772][INFO]: RESPONSE SetImplicitWait
-[5.773][INFO]: COMMAND SetImplicitWait {
+[5.759][INFO]: RESPONSE SetImplicitWait
+[5.761][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[5.774][INFO]: RESPONSE SetImplicitWait
-[5.775][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.775][INFO]: RESPONSE SetImplicitWait
-[5.776][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
-   "using": "partial link text",
-   "value": "JavaScript"
-}
-[5.776][INFO]: Waiting for pending navigations...
-[5.782][INFO]: Done waiting for pending navigations. Status: ok
-[5.878][INFO]: Waiting for pending navigations...
-[5.932][INFO]: Done waiting for pending navigations. Status: ok
-[5.932][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-3"
-} ]
-[5.934][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-3"
-}
-[5.934][INFO]: Waiting for pending navigations...
-[5.940][INFO]: Done waiting for pending navigations. Status: ok
-[5.952][INFO]: Waiting for pending navigations...
-[5.953][INFO]: Done waiting for pending navigations. Status: ok
-[5.953][INFO]: RESPONSE IsElementDisplayed stale element reference: element is not attached to the page document
-  (Session info: chrome=55.0.2883.87)
-[5.954][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.954][INFO]: RESPONSE SetImplicitWait
-[5.956][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[5.956][INFO]: RESPONSE SetImplicitWait
-[5.957][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
-   "using": "partial link text",
-   "value": "JavaScript"
-}
-[5.957][INFO]: Waiting for pending navigations...
-[5.957][INFO]: Done waiting for pending navigations. Status: ok
-[6.052][INFO]: Waiting for pending navigations...
-[6.053][INFO]: Done waiting for pending navigations. Status: ok
-[6.053][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.45088743800746656-4"
-} ]
-[6.054][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.45088743800746656-4"
-}
-[6.054][INFO]: Waiting for pending navigations...
-[6.057][INFO]: Done waiting for pending navigations. Status: ok
-[6.077][INFO]: Waiting for pending navigations...
-[6.077][INFO]: Done waiting for pending navigations. Status: ok
-[6.077][INFO]: RESPONSE IsElementDisplayed true
-[6.079][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[6.079][INFO]: RESPONSE SetImplicitWait
-[6.080][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[6.080][INFO]: RESPONSE SetImplicitWait
-[6.081][INFO]: COMMAND GetWindows {
+[5.761][INFO]: RESPONSE SetImplicitWait
+[5.763][INFO]: COMMAND GetWindows {
 
 }
-[6.082][INFO]: RESPONSE GetWindows [ "CDwindow-5603f81d-b397-4309-8859-f96e276ffeb0", "CDwindow-594cd324-b435-49fb-a12b-06d712a618a5" ]
-[6.083][INFO]: COMMAND SwitchToWindow {
-   "name": "CDwindow-5603f81d-b397-4309-8859-f96e276ffeb0",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.764][INFO]: RESPONSE GetWindows [ "CDwindow-8fe9bda6-92c8-430b-bada-cccd29063f3c", "CDwindow-521564bb-086c-414d-98d8-b23eee9d3590" ]
+[5.766][INFO]: COMMAND SwitchToWindow {
+   "name": "CDwindow-8fe9bda6-92c8-430b-bada-cccd29063f3c",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[6.084][INFO]: RESPONSE SwitchToWindow
-[6.085][INFO]: COMMAND GetUrl {
+[5.767][INFO]: RESPONSE SwitchToWindow
+[5.768][INFO]: COMMAND GetUrl {
 
 }
-[6.085][INFO]: Waiting for pending navigations...
-[6.976][INFO]: Done waiting for pending navigations. Status: ok
-[6.977][INFO]: Waiting for pending navigations...
-[6.978][INFO]: Done waiting for pending navigations. Status: ok
-[6.978][INFO]: RESPONSE GetUrl "http://cn.bing.com/"
-[6.980][INFO]: COMMAND GetTitle {
+[5.768][INFO]: Waiting for pending navigations...
+[5.770][INFO]: Done waiting for pending navigations. Status: ok
+[5.771][INFO]: Waiting for pending navigations...
+[5.772][INFO]: Done waiting for pending navigations. Status: ok
+[5.772][INFO]: RESPONSE GetUrl "http://cn.bing.com/"
+[5.773][INFO]: COMMAND GetTitle {
 
 }
-[6.980][INFO]: Waiting for pending navigations...
-[6.980][INFO]: Done waiting for pending navigations. Status: ok
-[6.982][INFO]: Waiting for pending navigations...
-[6.982][INFO]: Done waiting for pending navigations. Status: ok
-[6.982][INFO]: RESPONSE GetTitle "微软必应搜索 - 全球搜索，有问必应 (Bing)"
-[6.983][INFO]: COMMAND SetImplicitWait {
+[5.773][INFO]: Waiting for pending navigations...
+[5.774][INFO]: Done waiting for pending navigations. Status: ok
+[5.775][INFO]: Waiting for pending navigations...
+[5.775][INFO]: Done waiting for pending navigations. Status: ok
+[5.775][INFO]: RESPONSE GetTitle "微软必应搜索 - 全球搜索，有问必应 (Bing)"
+[5.777][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[6.983][INFO]: RESPONSE SetImplicitWait
-[6.985][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.777][INFO]: RESPONSE SetImplicitWait
+[5.778][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "sb_form_q"
 }
-[6.985][INFO]: Waiting for pending navigations...
-[6.985][INFO]: Done waiting for pending navigations. Status: ok
-[7.002][INFO]: Waiting for pending navigations...
-[7.003][INFO]: Done waiting for pending navigations. Status: ok
-[7.003][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.09662569865985526-1"
+[5.778][INFO]: Waiting for pending navigations...
+[5.778][INFO]: Done waiting for pending navigations. Status: ok
+[5.794][INFO]: Waiting for pending navigations...
+[5.795][INFO]: Done waiting for pending navigations. Status: ok
+[5.795][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.6094885288742895-1"
 } ]
-[7.004][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.09662569865985526-1"
+[5.796][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.6094885288742895-1"
 }
-[7.005][INFO]: Waiting for pending navigations...
-[7.005][INFO]: Done waiting for pending navigations. Status: ok
-[7.023][INFO]: Waiting for pending navigations...
-[7.023][INFO]: Done waiting for pending navigations. Status: ok
-[7.023][INFO]: RESPONSE IsElementDisplayed true
-[7.025][INFO]: COMMAND SetImplicitWait {
+[5.796][INFO]: Waiting for pending navigations...
+[5.797][INFO]: Done waiting for pending navigations. Status: ok
+[5.813][INFO]: Waiting for pending navigations...
+[5.814][INFO]: Done waiting for pending navigations. Status: ok
+[5.814][INFO]: RESPONSE IsElementDisplayed true
+[5.815][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.025][INFO]: RESPONSE SetImplicitWait
-[7.026][INFO]: COMMAND SetImplicitWait {
+[5.815][INFO]: RESPONSE SetImplicitWait
+[5.817][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.026][INFO]: RESPONSE SetImplicitWait
-[7.027][INFO]: COMMAND ClearElement {
-   "id": "0.09662569865985526-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.817][INFO]: RESPONSE SetImplicitWait
+[5.818][INFO]: COMMAND ClearElement {
+   "id": "0.6094885288742895-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.027][INFO]: Waiting for pending navigations...
-[7.028][INFO]: Done waiting for pending navigations. Status: ok
-[7.045][INFO]: Waiting for pending navigations...
-[7.046][INFO]: Done waiting for pending navigations. Status: ok
-[7.046][INFO]: RESPONSE ClearElement
-[7.047][INFO]: COMMAND TypeElement {
-   "id": "0.09662569865985526-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.818][INFO]: Waiting for pending navigations...
+[5.818][INFO]: Done waiting for pending navigations. Status: ok
+[5.836][INFO]: Waiting for pending navigations...
+[5.837][INFO]: Done waiting for pending navigations. Status: ok
+[5.837][INFO]: RESPONSE ClearElement
+[5.839][INFO]: COMMAND TypeElement {
+   "id": "0.6094885288742895-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "value": [ "t", "e", "s", "t" ]
 }
-[7.047][INFO]: Waiting for pending navigations...
-[7.048][INFO]: Done waiting for pending navigations. Status: ok
-[7.084][INFO]: Waiting for pending navigations...
-[7.088][INFO]: Done waiting for pending navigations. Status: ok
-[7.088][INFO]: RESPONSE TypeElement
-[7.090][INFO]: COMMAND SetImplicitWait {
+[5.839][INFO]: Waiting for pending navigations...
+[5.839][INFO]: Done waiting for pending navigations. Status: ok
+[5.875][INFO]: Waiting for pending navigations...
+[5.879][INFO]: Done waiting for pending navigations. Status: ok
+[5.879][INFO]: RESPONSE TypeElement
+[5.881][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.090][INFO]: RESPONSE SetImplicitWait
-[7.091][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.881][INFO]: RESPONSE SetImplicitWait
+[5.882][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "sb_form_q"
 }
-[7.091][INFO]: Waiting for pending navigations...
-[7.092][INFO]: Done waiting for pending navigations. Status: ok
-[7.096][INFO]: Waiting for pending navigations...
-[7.096][INFO]: Done waiting for pending navigations. Status: ok
-[7.096][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.09662569865985526-1"
+[5.882][INFO]: Waiting for pending navigations...
+[5.883][INFO]: Done waiting for pending navigations. Status: ok
+[5.887][INFO]: Waiting for pending navigations...
+[5.888][INFO]: Done waiting for pending navigations. Status: ok
+[5.888][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.6094885288742895-1"
 } ]
-[7.098][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.09662569865985526-1"
+[5.889][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.6094885288742895-1"
 }
-[7.098][INFO]: Waiting for pending navigations...
-[7.099][INFO]: Done waiting for pending navigations. Status: ok
-[7.104][INFO]: Waiting for pending navigations...
-[7.104][INFO]: Done waiting for pending navigations. Status: ok
-[7.105][INFO]: RESPONSE IsElementDisplayed true
-[7.106][INFO]: COMMAND SetImplicitWait {
+[5.889][INFO]: Waiting for pending navigations...
+[5.890][INFO]: Done waiting for pending navigations. Status: ok
+[5.894][INFO]: Waiting for pending navigations...
+[5.896][INFO]: Done waiting for pending navigations. Status: ok
+[5.896][INFO]: RESPONSE IsElementDisplayed true
+[5.897][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.106][INFO]: RESPONSE SetImplicitWait
-[7.107][INFO]: COMMAND SetImplicitWait {
+[5.897][INFO]: RESPONSE SetImplicitWait
+[5.898][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.108][INFO]: RESPONSE SetImplicitWait
-[7.109][INFO]: COMMAND ClearElement {
-   "id": "0.09662569865985526-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.898][INFO]: RESPONSE SetImplicitWait
+[5.899][INFO]: COMMAND ClearElement {
+   "id": "0.6094885288742895-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.109][INFO]: Waiting for pending navigations...
-[7.110][INFO]: Done waiting for pending navigations. Status: ok
-[7.115][INFO]: Waiting for pending navigations...
-[7.120][INFO]: Done waiting for pending navigations. Status: ok
-[7.120][INFO]: RESPONSE ClearElement
-[7.121][INFO]: COMMAND TypeElement {
-   "id": "0.09662569865985526-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.899][INFO]: Waiting for pending navigations...
+[5.900][INFO]: Done waiting for pending navigations. Status: ok
+[5.905][INFO]: Waiting for pending navigations...
+[5.906][INFO]: Done waiting for pending navigations. Status: ok
+[5.906][INFO]: RESPONSE ClearElement
+[5.908][INFO]: COMMAND TypeElement {
+   "id": "0.6094885288742895-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "value": [ "t", "e", "s", "t" ]
 }
-[7.121][INFO]: Waiting for pending navigations...
-[7.122][INFO]: Done waiting for pending navigations. Status: ok
-[7.135][INFO]: Waiting for pending navigations...
-[7.136][INFO]: Done waiting for pending navigations. Status: ok
-[7.136][INFO]: RESPONSE TypeElement
-[7.138][INFO]: COMMAND SetImplicitWait {
+[5.908][INFO]: Waiting for pending navigations...
+[5.908][INFO]: Done waiting for pending navigations. Status: ok
+[5.922][INFO]: Waiting for pending navigations...
+[5.922][INFO]: Done waiting for pending navigations. Status: ok
+[5.922][INFO]: RESPONSE TypeElement
+[5.924][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.138][INFO]: RESPONSE SetImplicitWait
-[7.139][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[5.924][INFO]: RESPONSE SetImplicitWait
+[5.925][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "sb_form_go"
 }
-[7.139][INFO]: Waiting for pending navigations...
-[7.139][INFO]: Done waiting for pending navigations. Status: ok
-[7.154][INFO]: Waiting for pending navigations...
-[7.155][INFO]: Done waiting for pending navigations. Status: ok
-[7.155][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.09662569865985526-2"
+[5.925][INFO]: Waiting for pending navigations...
+[5.925][INFO]: Done waiting for pending navigations. Status: ok
+[5.940][INFO]: Waiting for pending navigations...
+[5.941][INFO]: Done waiting for pending navigations. Status: ok
+[5.941][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.6094885288742895-2"
 } ]
-[7.157][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.09662569865985526-2"
+[5.943][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.6094885288742895-2"
 }
-[7.157][INFO]: Waiting for pending navigations...
-[7.157][INFO]: Done waiting for pending navigations. Status: ok
-[7.172][INFO]: Waiting for pending navigations...
-[7.173][INFO]: Done waiting for pending navigations. Status: ok
-[7.173][INFO]: RESPONSE IsElementDisplayed true
-[7.175][INFO]: COMMAND SetImplicitWait {
+[5.943][INFO]: Waiting for pending navigations...
+[5.944][INFO]: Done waiting for pending navigations. Status: ok
+[5.959][INFO]: Waiting for pending navigations...
+[5.959][INFO]: Done waiting for pending navigations. Status: ok
+[5.959][INFO]: RESPONSE IsElementDisplayed true
+[5.961][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.175][INFO]: RESPONSE SetImplicitWait
-[7.176][INFO]: COMMAND SetImplicitWait {
+[5.961][INFO]: RESPONSE SetImplicitWait
+[5.962][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.176][INFO]: RESPONSE SetImplicitWait
-[7.177][INFO]: COMMAND IsElementEnabled {
-   "id": "0.09662569865985526-2"
+[5.962][INFO]: RESPONSE SetImplicitWait
+[5.963][INFO]: COMMAND IsElementEnabled {
+   "id": "0.6094885288742895-2"
 }
-[7.177][INFO]: Waiting for pending navigations...
-[7.177][INFO]: Done waiting for pending navigations. Status: ok
-[7.187][INFO]: Waiting for pending navigations...
-[7.187][INFO]: Done waiting for pending navigations. Status: ok
-[7.187][INFO]: RESPONSE IsElementEnabled true
-[7.189][INFO]: COMMAND ClickElement {
-   "id": "0.09662569865985526-2",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[5.963][INFO]: Waiting for pending navigations...
+[5.963][INFO]: Done waiting for pending navigations. Status: ok
+[5.972][INFO]: Waiting for pending navigations...
+[5.973][INFO]: Done waiting for pending navigations. Status: ok
+[5.973][INFO]: RESPONSE IsElementEnabled true
+[5.975][INFO]: COMMAND ClickElement {
+   "id": "0.6094885288742895-2",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.189][INFO]: Waiting for pending navigations...
-[7.190][INFO]: Done waiting for pending navigations. Status: ok
-[7.234][INFO]: Waiting for pending navigations...
-[7.888][INFO]: Done waiting for pending navigations. Status: ok
-[7.889][INFO]: RESPONSE ClickElement
-[7.890][INFO]: COMMAND SetImplicitWait {
+[5.975][INFO]: Waiting for pending navigations...
+[5.976][INFO]: Done waiting for pending navigations. Status: ok
+[6.018][INFO]: Waiting for pending navigations...
+[6.770][INFO]: Done waiting for pending navigations. Status: ok
+[6.770][INFO]: RESPONSE ClickElement
+[6.771][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.890][INFO]: RESPONSE SetImplicitWait
-[7.891][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[6.771][INFO]: RESPONSE SetImplicitWait
+[6.773][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "id",
    "value": "sb_form_go"
 }
-[7.891][INFO]: Waiting for pending navigations...
-[7.898][INFO]: Done waiting for pending navigations. Status: ok
-[7.903][INFO]: Waiting for pending navigations...
-[7.904][INFO]: Done waiting for pending navigations. Status: ok
-[7.904][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.7627816306105906-1"
+[6.773][INFO]: Waiting for pending navigations...
+[6.773][INFO]: Done waiting for pending navigations. Status: ok
+[6.778][INFO]: Waiting for pending navigations...
+[6.779][INFO]: Done waiting for pending navigations. Status: ok
+[6.779][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.7948674807412226-1"
 } ]
-[7.905][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.7627816306105906-1"
+[6.781][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.7948674807412226-1"
 }
-[7.905][INFO]: Waiting for pending navigations...
-[7.905][INFO]: Done waiting for pending navigations. Status: ok
-[7.922][INFO]: Waiting for pending navigations...
-[7.922][INFO]: Done waiting for pending navigations. Status: ok
-[7.922][INFO]: RESPONSE IsElementDisplayed true
-[7.924][INFO]: COMMAND SetImplicitWait {
+[6.781][INFO]: Waiting for pending navigations...
+[6.782][INFO]: Done waiting for pending navigations. Status: ok
+[6.797][INFO]: Waiting for pending navigations...
+[6.797][INFO]: Done waiting for pending navigations. Status: ok
+[6.797][INFO]: RESPONSE IsElementDisplayed true
+[6.799][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.924][INFO]: RESPONSE SetImplicitWait
-[7.925][INFO]: COMMAND SetImplicitWait {
+[6.799][INFO]: RESPONSE SetImplicitWait
+[6.800][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.925][INFO]: RESPONSE SetImplicitWait
-[7.926][INFO]: COMMAND IsElementEnabled {
-   "id": "0.7627816306105906-1"
+[6.800][INFO]: RESPONSE SetImplicitWait
+[6.801][INFO]: COMMAND IsElementEnabled {
+   "id": "0.7948674807412226-1"
 }
-[7.926][INFO]: Waiting for pending navigations...
-[7.927][INFO]: Done waiting for pending navigations. Status: ok
-[7.936][INFO]: Waiting for pending navigations...
-[7.936][INFO]: Done waiting for pending navigations. Status: ok
-[7.936][INFO]: RESPONSE IsElementEnabled true
-[7.938][INFO]: COMMAND ClickElement {
-   "id": "0.7627816306105906-1",
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+[6.801][INFO]: Waiting for pending navigations...
+[6.801][INFO]: Done waiting for pending navigations. Status: ok
+[6.810][INFO]: Waiting for pending navigations...
+[6.811][INFO]: Done waiting for pending navigations. Status: ok
+[6.811][INFO]: RESPONSE IsElementEnabled true
+[6.813][INFO]: COMMAND ClickElement {
+   "id": "0.7948674807412226-1",
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[7.938][INFO]: Waiting for pending navigations...
-[7.938][INFO]: Done waiting for pending navigations. Status: ok
-[7.981][INFO]: Waiting for pending navigations...
-[8.533][INFO]: Done waiting for pending navigations. Status: ok
-[8.533][INFO]: RESPONSE ClickElement
-[8.534][INFO]: COMMAND SetImplicitWait {
+[6.813][INFO]: Waiting for pending navigations...
+[6.813][INFO]: Done waiting for pending navigations. Status: ok
+[6.856][INFO]: Waiting for pending navigations...
+[7.436][INFO]: Done waiting for pending navigations. Status: ok
+[7.436][INFO]: RESPONSE ClickElement
+[7.437][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[8.534][INFO]: RESPONSE SetImplicitWait
-[8.535][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[7.437][INFO]: RESPONSE SetImplicitWait
+[7.438][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "xpath",
    "value": "//li[@class='b_ans' and @data-bm='7']"
 }
-[8.535][INFO]: Waiting for pending navigations...
-[8.536][INFO]: Done waiting for pending navigations. Status: ok
-[9.562][INFO]: Waiting for pending navigations...
-[9.562][INFO]: Done waiting for pending navigations. Status: ok
-[9.562][INFO]: RESPONSE FindElements [  ]
-[9.564][INFO]: COMMAND SetImplicitWait {
+[7.438][INFO]: Waiting for pending navigations...
+[7.444][INFO]: Done waiting for pending navigations. Status: ok
+[8.495][INFO]: Waiting for pending navigations...
+[8.497][INFO]: Done waiting for pending navigations. Status: ok
+[8.497][INFO]: RESPONSE FindElements [  ]
+[8.499][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[8.500][INFO]: RESPONSE SetImplicitWait
+[8.502][INFO]: COMMAND SetImplicitWait {
+   "ms": 1000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[8.502][INFO]: RESPONSE SetImplicitWait
+[8.505][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
+   "using": "xpath",
+   "value": "//li[@class='b_ans' and @data-bm='7']"
+}
+[8.505][INFO]: Waiting for pending navigations...
+[8.507][INFO]: Done waiting for pending navigations. Status: ok
+[9.560][INFO]: Waiting for pending navigations...
+[9.561][INFO]: Done waiting for pending navigations. Status: ok
+[9.561][INFO]: RESPONSE FindElements [  ]
+[9.563][INFO]: COMMAND SetImplicitWait {
+   "ms": 20000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
+}
+[9.563][INFO]: RESPONSE SetImplicitWait
+[9.564][INFO]: COMMAND SetImplicitWait {
+   "ms": 1000.0,
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
 [9.564][INFO]: RESPONSE SetImplicitWait
-[9.565][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[9.566][INFO]: RESPONSE SetImplicitWait
-[9.567][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[9.565][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "xpath",
    "value": "//li[@class='b_ans' and @data-bm='7']"
 }
-[9.567][INFO]: Waiting for pending navigations...
-[9.568][INFO]: Done waiting for pending navigations. Status: ok
-[10.618][INFO]: Waiting for pending navigations...
-[10.619][INFO]: Done waiting for pending navigations. Status: ok
-[10.619][INFO]: RESPONSE FindElements [  ]
-[10.620][INFO]: COMMAND SetImplicitWait {
+[9.565][INFO]: Waiting for pending navigations...
+[9.566][INFO]: Done waiting for pending navigations. Status: ok
+[10.615][INFO]: Waiting for pending navigations...
+[10.616][INFO]: Done waiting for pending navigations. Status: ok
+[10.616][INFO]: RESPONSE FindElements [  ]
+[10.618][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[10.620][INFO]: RESPONSE SetImplicitWait
-[10.621][INFO]: COMMAND SetImplicitWait {
+[10.618][INFO]: RESPONSE SetImplicitWait
+[10.619][INFO]: COMMAND SetImplicitWait {
    "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[10.621][INFO]: RESPONSE SetImplicitWait
-[10.623][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
+[10.619][INFO]: RESPONSE SetImplicitWait
+[10.620][INFO]: COMMAND FindElements {
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68",
    "using": "xpath",
    "value": "//li[@class='b_ans' and @data-bm='7']"
 }
-[10.623][INFO]: Waiting for pending navigations...
-[10.624][INFO]: Done waiting for pending navigations. Status: ok
-[11.672][INFO]: Waiting for pending navigations...
-[11.672][INFO]: Done waiting for pending navigations. Status: ok
-[11.672][INFO]: RESPONSE FindElements [  ]
-[11.674][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[11.674][INFO]: RESPONSE SetImplicitWait
-[11.675][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[11.675][INFO]: RESPONSE SetImplicitWait
-[11.676][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
-   "using": "xpath",
-   "value": "//li[@class='b_ans' and @data-bm='7']"
-}
-[11.676][INFO]: Waiting for pending navigations...
-[11.677][INFO]: Done waiting for pending navigations. Status: ok
-[11.903][INFO]: Waiting for pending navigations...
-[11.903][INFO]: Done waiting for pending navigations. Status: ok
-[11.903][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.18690161572509978-1"
+[10.620][INFO]: Waiting for pending navigations...
+[10.620][INFO]: Done waiting for pending navigations. Status: ok
+[11.450][INFO]: Waiting for pending navigations...
+[11.451][INFO]: Done waiting for pending navigations. Status: ok
+[11.451][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.8281322526649553-1"
 } ]
-[11.905][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.18690161572509978-1"
+[11.452][INFO]: COMMAND IsElementDisplayed {
+   "id": "0.8281322526649553-1"
 }
-[11.905][INFO]: Waiting for pending navigations...
-[11.905][INFO]: Done waiting for pending navigations. Status: ok
-[11.921][INFO]: Waiting for pending navigations...
-[11.922][INFO]: Done waiting for pending navigations. Status: ok
-[11.922][INFO]: RESPONSE IsElementDisplayed true
-[11.923][INFO]: COMMAND SetImplicitWait {
+[11.452][INFO]: Waiting for pending navigations...
+[11.453][INFO]: Done waiting for pending navigations. Status: ok
+[11.474][INFO]: Waiting for pending navigations...
+[11.475][INFO]: Done waiting for pending navigations. Status: ok
+[11.475][INFO]: RESPONSE IsElementDisplayed true
+[11.476][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[11.923][INFO]: RESPONSE SetImplicitWait
-[11.924][INFO]: COMMAND SetImplicitWait {
+[11.477][INFO]: RESPONSE SetImplicitWait
+[11.478][INFO]: COMMAND SetImplicitWait {
    "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
+   "sessionId": "8ad05daf5664d5342fb57247f10b8b68"
 }
-[11.924][INFO]: RESPONSE SetImplicitWait
-[11.925][INFO]: COMMAND SetImplicitWait {
-   "ms": 1000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[11.925][INFO]: RESPONSE SetImplicitWait
-[11.927][INFO]: COMMAND FindElements {
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703",
-   "using": "xpath",
-   "value": "//li[@class='b_ans' and @data-bm='7']"
-}
-[11.927][INFO]: Waiting for pending navigations...
-[11.927][INFO]: Done waiting for pending navigations. Status: ok
-[11.933][INFO]: Waiting for pending navigations...
-[11.933][INFO]: Done waiting for pending navigations. Status: ok
-[11.934][INFO]: RESPONSE FindElements [ {
-   "ELEMENT": "0.18690161572509978-1"
-} ]
-[11.935][INFO]: COMMAND IsElementDisplayed {
-   "id": "0.18690161572509978-1"
-}
-[11.935][INFO]: Waiting for pending navigations...
-[11.935][INFO]: Done waiting for pending navigations. Status: ok
-[11.939][INFO]: Waiting for pending navigations...
-[11.940][INFO]: Done waiting for pending navigations. Status: ok
-[11.940][INFO]: RESPONSE IsElementDisplayed true
-[11.941][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[11.941][INFO]: RESPONSE SetImplicitWait
-[11.943][INFO]: COMMAND SetImplicitWait {
-   "ms": 20000.0,
-   "sessionId": "f27824c4e30d236ba18d5e2db1cb1703"
-}
-[11.943][INFO]: RESPONSE SetImplicitWait
-[11.944][INFO]: COMMAND Quit {
+[11.478][INFO]: RESPONSE SetImplicitWait
+[11.479][INFO]: COMMAND Quit {
 
 }
-[11.972][INFO]: RESPONSE Quit
+[11.509][INFO]: RESPONSE Quit

@@ -112,5 +112,15 @@ class System:
             return "\"%s\"" % value
         return "'%s'" % value
 
+    @staticmethod
+    def parse_locator(locator):
+        prefix = None
+        criteria = locator
+        if not locator.startswith('//'):
+            locator_parts = locator.partition('=')
+            if len(locator_parts[1]) > 0:
+                prefix = locator_parts[0]
+                criteria = locator_parts[2].strip()
+        return prefix, criteria
 # if __name__ == '__main__':
 #     System.read_config_param('ipad', 'deviceName')

@@ -132,7 +132,7 @@ class ApplicationManagemer(KeywordGroup):
         self._info("Appium Session ID: " + self._current_application().session_id)
         return self._current_application().session_id
 
-    def get_source_m(self):
+    def get_source(self):
         """Returns the entire source of the current page."""
         return self._current_application().page_source
 
@@ -146,64 +146,49 @@ class ApplicationManagemer(KeywordGroup):
         self._log(source, loglevel.upper())
         return source
 
-    def go_back_m(self):
-        """Goes one step backward in the browser history."""
-        self._current_application().back()
-
-    def lock_m(self, seconds=5):
+    def lock(self, seconds=5):
         """
         Lock the device for a certain period of time. iOS only.
         """
         self._current_application().lock(robot.utils.timestr_to_secs(seconds))
 
-    def background_app_m(self, seconds=5):
+    def background_app(self, seconds=5):
         """
         Puts the application in the background on the device for a certain
         duration.
         """
         self._current_application().background_app(seconds)
 
-    def shake_m(self):
+    def shake(self):
         """
         Shake the device
         """
         self._current_application().shake()
 
-    def portrait_m(self):
+    def portrait(self):
         """
         Set the device orientation to PORTRAIT
         """
         self._rotate('PORTRAIT')
 
-    def landscape_m(self):
+    def landscape(self):
         """
         Set the device orientation to LANDSCAPE
         """
         self._rotate('LANDSCAPE')
 
-    def get_current_context_m(self):
+    def get_current_context(self):
         """Get current context."""
         return self._current_application().current_context
 
     def get_contexts_m(self):
         """Get available contexts."""
-        print(self._current_application().contexts)
+        print self._current_application().contexts
         return self._current_application().contexts
 
-    def switch_to_context_m(self, context_name):
+    def switch_to_context(self, context_name):
         """Switch to a new context"""
         self._current_application().switch_to.context(context_name)
-
-    def go_to_url_m(self, url):
-        """
-        Opens URL in default web browser.
-
-        Example:
-        | Open Application  | http://localhost:4755/wd/hub | platformName=iOS | platformVersion=7.0 |
-        deviceName='iPhone Simulator' | browserName=Safari |
-        | Go To URL         | http://m.webapp.com          |
-        """
-        self._current_application().get(url)
 
     # Private
 
