@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from AppiumLibrary.locators import ElementFinder
+from BJRobot.locators import ElementFinder
 from .keywordgroup import KeywordGroup
 from robot.libraries.BuiltIn import BuiltIn
 import ast

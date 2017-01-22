@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from AppiumLibrary import utils
+from BJRobot.utilities import System
 from robot.api import logger
 
 
@@ -119,7 +118,7 @@ class ElementFinder(object):
         if tag is not None:
             key_attrs = self._key_attrs.get(tag, key_attrs)
 
-        xpath_criteria = utils.escape_xpath_value(criteria)
+        xpath_criteria = System.escape_xpath_value(criteria)
         xpath_tag = tag if tag is not None else '*'
         xpath_constraints = ["@%s='%s'" % (name, constraints[name]) for name in constraints]
         xpath_searchers = ["%s=%s" % (attr, xpath_criteria) for attr in key_attrs]
@@ -190,7 +189,7 @@ class ElementFinder(object):
             if attr in key_attrs:
                 if url is None or xpath_url is None:
                     url = self._get_base_url(browser) + "/" + criteria
-                    xpath_url = utils.escape_xpath_value(url)
+                    xpath_url = System.escape_xpath_value(url)
                 attrs.append("%s=%s" % (attr, xpath_url))
         return attrs
 
