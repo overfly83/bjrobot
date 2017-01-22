@@ -1,5 +1,4 @@
 decorator >= 4.0.10
 selenium >= 3.0.0
 robotframework >= 3.0.0
-robotframework-appiumlibrary>=1.4.2
 Appium-Python-Client >= 0.24
