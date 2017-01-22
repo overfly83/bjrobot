@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
-import os
+
 from keywords import *
 from utilities import System
 from version import VERSION
 
-THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-execfile(os.path.join(THIS_DIR, 'version.py'))
 
 __version__ = VERSION
 
 
 
-class BJRobot(BrowserManager, Element, Screenshot, Logging, RunOnFailure):
+class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent, Mobile_Element, Mobile_Touch, Element, Screenshot, Logging, RunOnFailure):
 
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = VERSION
