@@ -38,4 +38,6 @@ finally:
     aa.close_all_browsers()
     aa.close_all_applications()
 
+# python -m robot.libdoc -f html BJRobot e:/bjrobot/doc/BJRobot.html
+
 
