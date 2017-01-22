@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from BJRobot import *
-from selenium.webdriver.common.by import By
-
+from AppiumLibrary import *
 aa = BJRobot()
+bb = AppiumLibrary()
 try:
-
+    bb.op
     aa.open_browser("http://www.bing.com")
+
     aa.open_new_window("http://www.baidu.com")
     aa.switch_window(u"百度一下， 你就知道")
     aa.set_value('id=kw','test')

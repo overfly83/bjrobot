@@ -2,7 +2,6 @@
 import os
 from keywords import *
 from utilities import System
-import AppiumLibrary
 from version import VERSION
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
