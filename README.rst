@@ -1,6 +1,6 @@
 Introduction
 --------------
-RJRobot is an webdriver based testing library for RobotFramework which could handle both desktop browser and mobile native and hybrid app.
+BJRobot is an webdriver based testing library for RobotFramework which could handle both desktop browser and mobile native and hybrid app.
 
 It support latest Selenium 3.0 webdriver and could be used without downloading webdriver for each browser again.
 It uses Appium (version 1.x) to communicate with Android and iOS application similar to how Selenium WebDriver talks to web browser.
