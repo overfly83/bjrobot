@@ -19,7 +19,7 @@ setup(
     url='https://github.com/overfly83/bjrobot',
     license='Apache License 2.0',
     package_dir={'': 'src'},
-    packages=['BJRobot', 'BJRobot.keywords', 'BJRobot.utilities', 'BJRobot.locators'],
+    packages=['BJRobot', 'BJRobot.keywords', 'BJRobot.utilities'],
     include_package_data=True,
     install_requires=REQUIREMENTS,
     author="edward zhang",

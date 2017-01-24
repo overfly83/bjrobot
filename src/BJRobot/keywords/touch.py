@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from appium.webdriver.common.touch_action import TouchAction
-from BJRobot.locators import ElementFinder
 from .keywordgroup import KeywordGroup
 
 
-class Mobile_Touch(KeywordGroup):
+class Touch(KeywordGroup):
 
     def __init__(self):
-        self._element_finder = ElementFinder()
+        pass
 
     # Public, element lookups
     def zoom(self, locator, percent="200%", steps=1):
@@ -17,7 +16,7 @@ class Mobile_Touch(KeywordGroup):
         For mobile application testing only
         """
         driver = self._current_application()
-        element = self._element_find(locator, True, True)
+        element = self.find_element(locator)
         driver.zoom(element=element, percent=percent, steps=steps)
 
     def pinch(self, locator, percent="200%", steps=1):
@@ -25,7 +24,7 @@ class Mobile_Touch(KeywordGroup):
         Pinch in on an element a certain amount.
         """
         driver = self._current_application()
-        element = self._element_find(locator, True, True)
+        element = self.find_element(locator)
         driver.pinch(element=element, percent=percent, steps=steps)
 
     def swipe(self, start_x, start_y, offset_x, offset_y, duration=1000):
@@ -55,8 +54,8 @@ class Mobile_Touch(KeywordGroup):
         Key attributes for arbitrary elements are `id` and `name`. See
         `introduction` for details about locating elements.
         """
-        el1 = self._element_find(start_locator, True, True)
-        el2 = self._element_find(end_locator, True, True)
+        el1 = self.find_element(start_locator)
+        el2 = self.find_element(end_locator)
         driver = self._current_application()
         driver.scroll(el1, el2)
 
@@ -65,13 +64,13 @@ class Mobile_Touch(KeywordGroup):
         For mobile application testing only
         """
         driver = self._current_application()
-        element = self._element_find(locator, True, True)
+        element = self.find_element(locator)
         driver.execute_script("mobile: scroll", {"direction": 'down', 'element': element.id})
 
     def scroll_up(self, locator):
         """Scrolls up to element"""
         driver = self._current_application()
-        element = self._element_find(locator, True, True)
+        element = self.find_element(locator)
         driver.execute_script("mobile: scroll", {"direction": 'up', 'element': element.id})
 
     def long_press(self, locator):
@@ -79,7 +78,7 @@ class Mobile_Touch(KeywordGroup):
         For mobile application testing only
         """
         driver = self._current_application()
-        element = self._element_find(locator, True, True)
+        element = self.find_element(locator)
         long_press = TouchAction(driver).long_press(element)
         long_press.perform()
 
@@ -88,7 +87,7 @@ class Mobile_Touch(KeywordGroup):
         For mobile application testing only
         """
         driver = self._current_application()
-        el = self._element_find(locator, True, True)
+        el = self.find_element(locator)
         action = TouchAction(driver)
         action.tap(el).perform()
 

@@ -3,20 +3,18 @@ from element import Element
 from screenshot import Screenshot
 from logging import Logging
 from runonfailure import RunOnFailure
-from mobile_keyevent import Keyevent
-from mobile_element import Mobile_Element
+from keyevent import Keyevent
 from android_utils import AndroidUtils
-from mobile_touch import Mobile_Touch
+from touch import Touch
 from applicationmanager import ApplicationManagemer
 from wait import Waiting
 
 __all__ = ['BrowserManager',
            'Element',
            'ApplicationManagemer',
-           'Mobile_Element',
            'AndroidUtils',
            'Waiting',
-           'Mobile_Touch',
+           'Touch',
            'Screenshot',
            'Keyevent',
            'Logging',

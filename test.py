@@ -25,11 +25,14 @@ try:
 
 
     aa.open_application('http://127.0.0.1:4723/wd/hub', platformName='Android', platformVersion='4.2.2', deviceName='tesddt', app='e:/robotframework-appiumlibrary/demo/demoapp/ContactManager.apk', automationName='appium')
-    aa.click_element_mobile('id=com.example.android.contactmanager:id/addContactButton')
-    aa.input_text_mobile('id=com.example.android.contactmanager:id/contactNameEditText', 'appium user')
-    aa.input_text_mobile('id=com.example.android.contactmanager:id/contactPhoneEditText', '55554446666')
-    aa.input_text_mobile('id=com.example.android.contactmanager:id/contactEmailEditText', 'demo@io.com')
-    aa.click_element_mobile('accessibility_id=Save')
+    aa.click_element('id=com.example.android.contactmanager:id/addContactButton')
+    aa.set_value('id=com.example.android.contactmanager:id/contactNameEditText', 'appium user')
+    aa.set_value_by_id('com.example.android.contactmanager:id/contactNameEditText','aaaaaaaaaaaa haha')
+    aa.set_value('id=com.example.android.contactmanager:id/contactPhoneEditText', '55554446666')
+    aa.set_value('id=com.example.android.contactmanager:id/contactEmailEditText', 'demo@io.com')
+
+    aa.scroll_down('accessibility_id=Save')
+    aa.click_element('accessibility_id=Save')
     aa.close_application()
 
 finally:

@@ -198,11 +198,13 @@ class ApplicationManagemer(KeywordGroup):
         return self._cache.current
 
     def _get_platform(self):
+        platform_name = None
         try:
-            platform_name = self._current_application().desired_capabilities['platformName']
+            if self._current_application().desired_capabilities.has_key('platformName'):
+                platform_name = self._current_application().desired_capabilities['platformName']
         except Exception as e:
             raise e
-        return platform_name.lower()
+        return None if platform_name is None else platform_name.lower()
 
     def _is_platform(self, platform):
         platform_name = self._get_platform()

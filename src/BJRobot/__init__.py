@@ -9,7 +9,7 @@ __version__ = VERSION
 
 
 
-class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent, Mobile_Element, Mobile_Touch, Element, Screenshot, Logging, RunOnFailure):
+class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent, Touch, Element, Screenshot, Logging, RunOnFailure):
 
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = VERSION

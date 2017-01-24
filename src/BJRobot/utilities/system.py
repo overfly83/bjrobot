@@ -3,6 +3,7 @@ import errno
 import platform
 from selenium.webdriver.common.keys import Keys
 import ConfigParser
+from robot.api import logger
 
 
 class System:
@@ -119,8 +120,16 @@ class System:
         if not locator.startswith('//'):
             locator_parts = locator.partition('=')
             if len(locator_parts[1]) > 0:
-                prefix = locator_parts[0]
+                prefix = locator_parts[0].strip()
                 criteria = locator_parts[2].strip()
-        return prefix, criteria
+        return prefix.lower(), criteria
+
+    @staticmethod
+    def normalize_result(elements):
+        if not isinstance(elements, list):
+            logger.debug("WebDriver find returned %s" % elements)
+            return []
+        return elements
+
 # if __name__ == '__main__':
-#     System.read_config_param('ipad', 'deviceName')
+#     print System.parse_locator("xpath =//div[@class=text]").__str__()
