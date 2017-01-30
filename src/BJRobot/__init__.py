@@ -3,13 +3,15 @@
 from keywords import *
 from utilities import System
 from version import VERSION
+from os.path import join, dirname
 
 
+execfile(join(dirname(__file__), 'src', 'BJRobot', 'version.py'))
 __version__ = VERSION
 
 
-
-class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent, Touch, Element, Screenshot, Logging, RunOnFailure):
+class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent,
+              Touch, Element, Screenshot, Logging, RunOnFailure):
 
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = VERSION
