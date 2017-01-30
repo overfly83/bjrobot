@@ -445,6 +445,8 @@ class BrowserManager(KeywordGroup):
                 default = default + os.sep + "chromedriver"
             elif System.get_os_name() == "windows":
                 default = default + os.sep + "win32" + os.sep + "chromedriver.exe"
+            elif System.get_os_name() == "macos":
+                default = default + os.sep + "mac64" + os.sep + "chromedriver"
 
         elif _browser == "edge":
             default = default + os.sep + _browser + os.sep + self.edge_driver_version \
