@@ -225,8 +225,6 @@ class Element(KeywordGroup):
         like to click exactly matching text, then set ``exact_match`` to `True`.
         If there are multiple use  of ``text`` and you do not want first one,
         use `locator` with `Get Web Elements` instead.
-
-        New in AppiumLibrary 1.4.
         """
         if self._get_platform() == 'ios':
             if exact_match:

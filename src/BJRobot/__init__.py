@@ -3,16 +3,22 @@
 from keywords import *
 from utilities import System
 from version import VERSION
-from os.path import join, dirname
 
-
-execfile(join(dirname(__file__), 'src', 'BJRobot', 'version.py'))
 __version__ = VERSION
 
 
 class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent,
               Touch, Element, Screenshot, Logging, RunOnFailure):
+    """
+    BJRobot is an webdriver based testing library for RobotFramework which could handle both
+    desktop browser and mobile native and hybrid app.
 
+    It support latest Selenium 3.0 webdriver and could be used without downloading webdriver for each browser again.
+    It uses Appium (version 1.x) to communicate with Android and iOS application similar to how Selenium WebDriver
+    talks to web browser.
+
+    It support Python 2.x for now.
+    """
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_LIBRARY_VERSION = VERSION
 
@@ -21,9 +27,8 @@ class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent,
                  screenshot_root_directory=None
                  ):
         """BJRobot can be imported with optional arguments.
-
         ``run_on_failure`` specifies the name of a keyword (from any available
-        libraries) to execute when a AppiumLibrary keyword fails.
+        libraries) to execute when a keyword fails.
 
         By default `Capture Page Screenshot` will be used to take a screenshot of the current page.
         Using the value `No Operation` will disable this feature altogether. See
@@ -31,8 +36,8 @@ class BJRobot(BrowserManager, ApplicationManagemer, AndroidUtils, Keyevent,
         functionality.
 
         Examples:
-        | Library | AppiumLibrary | run_on_failure=Capture Page Screenshot | # Capture the screenshot when on failure |
-        | Library | AppiumLibrary | run_on_failure=Capture Page Screenshot | screenshot root directory=../screenshot |
+        | Library | BJRobot | run_on_failure=Capture Page Screenshot | # Capture the screenshot when on failure |
+        | Library | BJRobot | run_on_failure=Capture Page Screenshot | screenshot root directory=../screenshot |
          #Capture screenshot on failure and set the log root directory to the screenshot above the current folder level
         """
         for base in BJRobot.__bases__:

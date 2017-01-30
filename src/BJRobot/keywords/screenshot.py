@@ -14,8 +14,7 @@ class Screenshot(KeywordGroup):
 
     # Public
 
-    def capture_page_screenshot(self,
-                                filename='selenium-screenshot-{index}.png'):
+    def capture_page_screenshot(self, filename='selenium-screenshot-{index}.png'):
         """Takes a screenshot of the current page and embeds it into the log.
 
         ``filename`` argument specifies the name of the file to write the
@@ -25,23 +24,6 @@ class Screenshot(KeywordGroup):
         also considered relative to the same directory, if it is not
         given in absolute format. If an absolute or relative path is given
         but the path does not exist it will be created.
-
-        Starting from Selenium2Library 1.8 if ``filename`` contains _{index}_
-        characters, it will be automatically replaced with running index.
-        The running index is unique for each different filename. The absolute
-        path of the saved screenshot is always returned and it does not depend
-        does the ``filename`` contain _{index}_. See example 1 and 2 for more
-        details.
-
-        The _{index}_ is replaced with the actual index by using Python's
-        [https://docs.python.org/2/library/stdtypes.html#str.format|
-        str.format] method, and it can be formatted using the standard
-        [https://docs.python.org/2/library/string.html#format-string-syntax|
-        format string syntax]. The example 3 shows this by setting the width and
-        the fill character.
-
-        If there is a need to write literal _{index}_ or if ``filename``
-        contains _{_ or _}_ characters, then the braces must be doubled.
 
         Example 1:
         | ${file1} = | Capture Page Screenshot |

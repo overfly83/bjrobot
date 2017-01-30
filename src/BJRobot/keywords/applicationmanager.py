@@ -45,11 +45,8 @@ class ApplicationManagemer(KeywordGroup):
         | alias               | no     | alias             |
 
         Examples:
-        | Open Application | http://localhost:4723/wd/hub | alias=Myapp1         | platformName=iOS      |
-        platformVersion=7.0            | deviceName='iPhone Simulator'           | app=your.app          |
-        | Open Application | http://localhost:4723/wd/hub | platformName=Android | platformVersion=4.2.2 |
-        deviceName=192.168.56.101:5555 | app=${CURDIR}/demoapp/OrangeDemoApp.apk | appPackage=com.netease.qa.orangedemo
-        | appActivity=MainActivity |
+        | Open Application | http://localhost:4723/wd/hub | alias=Myapp1         | platformName=iOS      | platformVersion=7.0            | deviceName='iPhone Simulator'           | app=your.app          |
+        | Open Application | http://localhost:4723/wd/hub | platformName=Android | platformVersion=4.2.2 | deviceName=192.168.56.101:5555 | app=${CURDIR}/demoapp/OrangeDemoApp.apk | appPackage=com.netease.qa.orangedemo | appActivity=MainActivity |
         """
         desired_caps = kwargs
         application = appiumdriver.Remote(str(remote_url), desired_caps)
@@ -68,10 +65,8 @@ class ApplicationManagemer(KeywordGroup):
         which can be used to switch back to that application later.
 
         Example:
-        | ${appium1}=              | Open Application  | http://localhost:4723/wd/hub                   | alias=MyApp1 |
-         platformName=iOS | platformVersion=7.0 | deviceName='iPhone Simulator' | app=your.app |
-        | ${appium2}=              | Open Application  | http://localhost:4755/wd/hub                   | alias=MyApp2 |
-         platformName=iOS | platformVersion=7.0 | deviceName='iPhone Simulator' | app=your.app |
+        | ${appium1}=              | Open Application  | http://localhost:4723/wd/hub  | alias=MyApp1 | platformName=iOS | platformVersion=7.0 | deviceName='iPhone Simulator' | app=your.app |
+        | ${appium2}=              | Open Application  | http://localhost:4755/wd/hub  | alias=MyApp2 | platformName=iOS | platformVersion=7.0 | deviceName='iPhone Simulator' | app=your.app |
         | Click Element            | sendHello         | # Executed on appium running at localhost:4755 |
         | Switch Application       | ${appium1}        | # Switch using index                           |
         | Click Element            | ackHello          | # Executed on appium running at localhost:4723 |
