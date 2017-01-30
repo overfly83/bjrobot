@@ -5,5 +5,5 @@ recursive-include src *.py
 exclude test.py
 graft src/BJRobot/resource
 graft src/BJRobot/settings
-graft src/BJRobot/log/
+graft src/BJRobot/log
 recursive-exclude src *.pyc
