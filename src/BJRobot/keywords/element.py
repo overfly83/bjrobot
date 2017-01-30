@@ -1,12 +1,11 @@
 from selenium.webdriver.common.action_chains import ActionChains
-
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 from keywordgroup import KeywordGroup
 from BJRobot.utilities import System
 import time
 import robot.utils
 from unicodedata import normalize
-from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import WebDriverException as ec
 from selenium.webdriver.common.keys import Keys
 from appium.webdriver.common.mobileby import MobileBy
 
@@ -177,7 +176,7 @@ class Element(KeywordGroup):
         The possible locator could be
         id, xpath, link text, partial link text, name, tag name, class name, css selector
         Example:
-        | element should not be enabled | id=kw |
+        | element should not be enabled | id=kwiws |
         """
         (prefix, criteria) = System.parse_locator(locator)
         if self.is_element_enabled(locator, timeout=timeout):
@@ -190,7 +189,7 @@ class Element(KeywordGroup):
         The possible locator could be
         id, xpath, link text, partial link text, name, tag name, class name, css selector
         Example:
-        | click element | id = kw |
+        | click element | id = kwok |
         """
         element = self._safe_find(locator, timeout)
         self._safe_click(element, timeout=30)

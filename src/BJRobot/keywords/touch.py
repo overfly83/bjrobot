@@ -25,6 +25,7 @@ class Touch(KeywordGroup):
         """
         driver = self._current_application()
         element = self.find_element(locator)
+        action = TouchAction(driver)
         driver.pinch(element=element, percent=percent, steps=steps)
 
     def swipe(self, start_x, start_y, offset_x, offset_y, duration=1000):

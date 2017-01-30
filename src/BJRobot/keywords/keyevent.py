@@ -34,9 +34,7 @@ class Keyevent(KeywordGroup):
 
     def long_press_keycode(self, keycode, metastate=None):
         """Sends a long press of keycode to the device.
-
         Android only.
-
         See `press keycode` for more details.
         """
         driver = self._current_application()

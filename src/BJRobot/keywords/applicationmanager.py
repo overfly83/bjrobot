@@ -178,16 +178,24 @@ class ApplicationManagemer(KeywordGroup):
         self._rotate('LANDSCAPE')
 
     def get_current_context(self):
-        """Get current context."""
+        """Get current context. Save your current context to a variable and use it later if necessary.
+        Example:
+        |   ${current_context}= | Get Current Context  |
+        |   Switch To Context   |   ${current_context} |
+        """
         return self._current_application().current_context
 
-    def get_contexts_m(self):
+    def get_contexts(self):
         """Get available contexts."""
-        print self._current_application().contexts
         return self._current_application().contexts
 
     def switch_to_context(self, context_name):
-        """Switch to a new context"""
+        """Switch to a new context, if you have previous session context saved in your steps above,
+        you can switch back to the context again as below
+        Example:
+        |   ${current_context}= | Get Current Context  |
+        |   Switch To Context   |   ${current_context} |
+        """
         self._current_application().switch_to.context(context_name)
 
     # Private
