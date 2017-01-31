@@ -55,10 +55,8 @@ Documentation
 The keyword documentation could be found at `Keyword Documentation <https://overfly83.github.io/BJRobot.html>`_ 
 
 
-TO LIST
+TODO LIST
 ----------
-
-execute_javascript
 
 shell command support
 
