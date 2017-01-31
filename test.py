@@ -6,10 +6,11 @@ aa = BJRobot()
 
 try:
     aa.open_browser("http://www.bing.com")
-
     aa.open_new_window("http://www.baidu.com")
     aa.switch_window(u"百度一下， 你就知道")
     aa.set_value('id=kw', 'test')
+    print aa.execute_script("return document.title")
+    print aa.execute_async_script("return document.title")
     aa.set_value_by_id('kw', 'test')
     aa.click_element('id=su')
     aa.click_element_by_id('su')
@@ -22,7 +23,7 @@ try:
     aa.find_element("xpath=//li[@class='b_ans' and @data-bm='7']")
     # print aa.is_element_present("id=ddd", timeout=1)
     aa.close_browser()
-
+    '''
     aa.open_application('http://127.0.0.1:4723/wd/hub', platformName='Android', platformVersion='4.2.2',
                         deviceName='tesddt', app='e:/robotframework-appiumlibrary/demo/demoapp/ContactManager.apk',
                         automationName='appium')
@@ -36,10 +37,10 @@ try:
     aa.scroll('id=com.example.android.contactmanager:id/contactNameEditText', 'id=com.example.android.contactmanager:id/contactEmailEditText')
     aa.click_element('accessibility_id=Save')
     aa.close_application()
-
+    '''
 
 finally:
     aa.close_all_browsers()
-    aa.close_all_applications()
+    # aa.close_all_applications()
 
 # python -m robot.libdoc -f html e:/bjrobot/src/BJRobot e:/bjrobot/doc/BJRobot.html

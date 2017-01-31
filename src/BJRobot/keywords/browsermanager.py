@@ -68,6 +68,20 @@ class BrowserManager(KeywordGroup):
             raise
         self._cache.register(driver_instance, alias)
 
+    def execute_script(self, js, *args):
+        """
+        Let current browser window execute the specified script
+        Example:
+        |   ${window_title}=   |   Execute Script  |  return document.title   |
+        """
+        return self._current_browser().execute_script(js, args)
+
+    def execute_async_script(self, javascript, *args):
+        """
+        Let current browser window execute the specified script asynchronously
+        """
+        self._current_browser().execute_async_script(javascript, args)
+
     def open_new_window(self, url):
         """
         Open a new window in current browser, must in an existing browser
