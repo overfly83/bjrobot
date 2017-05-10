@@ -525,3 +525,13 @@ class Element(KeywordGroup):
         raise RuntimeError("Could not find element %s within %s millisecond." %
                            ((strategy, criteria).__str__(), int(round(time.time() * 1000)) - start)
                            )
+    def enter_text(self, locator, text, timeout=30):
+        """set value on a certain element by its locator
+        The possible locator could be
+        id, xpath, link text, partial link text, name, tag name, class name, css selector
+        Example:
+        | Set Value | id = kw | timeout=30 | enter=False |
+        """
+        element = self.find_element(locator, timeout)
+        element.clear()
+        element.send_keys(text)
